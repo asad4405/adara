@@ -39,7 +39,9 @@
     <!-- / Layout wrapper -->
 
     <!-- Core JS -->
+    @yield('footer_script')
     @include('Backend.includes.script')
+
 </body>
 
 </html>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard - </title>
 
     <meta name="description" content="" />
@@ -25,8 +25,10 @@
     <link rel="stylesheet" href="{{ asset('public/Backend') }}/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('public/Backend') }}/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('public/Backend') }}/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('public/Backend') }}/vendor/css/core.css"
+        class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('public/Backend') }}/vendor/css/theme-default.css"
+        class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('public/Backend') }}/css/demo.css" />
 
     <!-- Vendors CSS -->
@@ -35,6 +37,14 @@
     <link rel="stylesheet" href="{{ asset('public/Backend') }}/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 
     <!-- Helpers -->
     <script src="{{ asset('public/Backend') }}/vendor/js/helpers.js"></script>
