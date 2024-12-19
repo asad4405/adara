@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +23,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('subcategory', SubcategoryController::class, ['names' => 'admin.subcategory']);
     Route::get('subcategory/get/data', [SubcategoryController::class, 'getData'])->name('admin.subcategory.get-data');
     Route::get('subcategory/status/{id}', [SubcategoryController::class, 'statusUpdate']);
+
+    // childcategories
+    Route::resource('childcategory', ChildcategoryController::class, ['names' => 'admin.childcategory']);
+    Route::get('childcategory/get/data', [ChildcategoryController::class, 'getData'])->name('admin.childcategory.get-data');
+    Route::get('childcategory/status/{id}', [ChildcategoryController::class, 'statusUpdate']);
 });

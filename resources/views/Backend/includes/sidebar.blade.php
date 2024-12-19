@@ -74,7 +74,7 @@
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="layouts-without-menu.html" class="menu-link">
-                        <div data-i18n="Without menu">Without menu</div>
+                        <div data-i18n="Without menu">Product Manage</div>
                     </a>
                 </li>
                 <li class="menu-item">
@@ -88,13 +88,28 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-fluid.html" class="menu-link">
-                        <div data-i18n="Fluid">Fluid</div>
+                    <a href="{{ route('admin.childcategory.index') }}" class="menu-link">
+                        <div data-i18n="Fluid">Childcategories</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="layouts-blank.html" class="menu-link">
-                        <div data-i18n="Blank">Blank</div>
+                        <div data-i18n="Blank">Brands</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="layouts-blank.html" class="menu-link">
+                        <div data-i18n="Blank">Colors</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="layouts-blank.html" class="menu-link">
+                        <div data-i18n="Blank">Sizes</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="layouts-blank.html" class="menu-link">
+                        <div data-i18n="Blank">Price Edit</div>
                     </a>
                 </li>
             </ul>
