@@ -83,8 +83,8 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-container.html" class="menu-link">
-                        <div data-i18n="Container">Container</div>
+                    <a href="{{ route('admin.subcategory.index') }}" class="menu-link">
+                        <div data-i18n="Container">Subcategories</div>
                     </a>
                 </li>
                 <li class="menu-item">

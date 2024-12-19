@@ -2,20 +2,24 @@
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     // categories
-    Route::group(['prefix' => '/category'], function () {
-        Route::get('/manage', [CategoryController::class, 'manage'])->name('category.manage');
-        Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
-        Route::get('/get/data', [CategoryController::class, 'getData'])->name('category.get-data');
-        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
-        Route::post('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
-        Route::get('/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-        Route::get('/status/{id}', [CategoryController::class, 'status'])->name('category.status');
-        Route::get('/front/view/{id}', [CategoryController::class, 'frontView'])->name('category.frontview');
-    });
+    Route::get('/category/manage', [CategoryController::class, 'manage'])->name('category.manage');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/get/data', [CategoryController::class, 'getData'])->name('category.get-data');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::get('/category/status/{id}', [CategoryController::class, 'status'])->name('category.status');
+    Route::get('/category/front/view/{id}', [CategoryController::class, 'frontView'])->name('category.frontview');
+
+    // Subcategories
+    Route::resource('subcategory', SubcategoryController::class, ['names' => 'admin.subcategory']);
+    Route::get('subcategory/get/data', [SubcategoryController::class, 'getData'])->name('admin.subcategory.get-data');
+    Route::get('subcategory/status/{id}', [SubcategoryController::class, 'statusUpdate']);
 });
