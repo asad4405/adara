@@ -121,6 +121,10 @@ class SubcategoryController extends Controller
         if ($request->file('image')) {
             $image = $request->file('image');
 
+            if (!is_null($subcategory->image) && file_exists($subcategory->image)) {
+                unlink($subcategory->image);
+            }
+
             $imageName          = microtime('.') . '.' . $image->getClientOriginalExtension();
             $imagePath          = 'public/Backend/uploads/subcategory/';
             $image->move($imagePath, $imageName);

@@ -93,7 +93,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
+                    <a href="{{ route('admin.brand.index') }}" class="menu-link">
                         <div data-i18n="Blank">Brands</div>
                     </a>
                 </li>

@@ -122,6 +122,10 @@ class ChildcategoryController extends Controller
         if ($request->file('image')) {
             $image = $request->file('image');
 
+            if (!is_null($childcategory->image) && file_exists($childcategory->image)) {
+                unlink($childcategory->image);
+            }
+
             $imageName          = microtime('.') . '.' . $image->getClientOriginalExtension();
             $imagePath          = 'public/Backend/uploads/childcategory/';
             $image->move($imagePath, $imageName);

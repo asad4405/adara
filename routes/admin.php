@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -28,4 +29,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('childcategory', ChildcategoryController::class, ['names' => 'admin.childcategory']);
     Route::get('childcategory/get/data', [ChildcategoryController::class, 'getData'])->name('admin.childcategory.get-data');
     Route::get('childcategory/status/{id}', [ChildcategoryController::class, 'statusUpdate']);
+
+    // brands
+    Route::resource('brand', BrandController::class, ['names' => 'admin.brand']);
+    Route::get('brand/get/data', [BrandController::class, 'getData'])->name('admin.brand.get-data');
+    Route::get('brand/status/{id}', [BrandController::class, 'statusUpdate']);
 });
