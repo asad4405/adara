@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildcategoryController;
+use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('brand', BrandController::class, ['names' => 'admin.brand']);
     Route::get('brand/get/data', [BrandController::class, 'getData'])->name('admin.brand.get-data');
     Route::get('brand/status/{id}', [BrandController::class, 'statusUpdate']);
+
+    // colors
+    Route::resource('color', ColorController::class, ['names' => 'admin.color']);
+    Route::get('color/get/data', [ColorController::class, 'getData'])->name('admin.color.get-data');
+    Route::get('color/status/{id}', [ColorController::class, 'statusUpdate']);
 });

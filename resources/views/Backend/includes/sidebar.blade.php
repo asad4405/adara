@@ -98,7 +98,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
+                    <a href="{{ route('admin.color.index') }}" class="menu-link">
                         <div data-i18n="Blank">Colors</div>
                     </a>
                 </li>
