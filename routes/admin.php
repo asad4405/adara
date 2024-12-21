@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\SizeController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,4 +41,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('color', ColorController::class, ['names' => 'admin.color']);
     Route::get('color/get/data', [ColorController::class, 'getData'])->name('admin.color.get-data');
     Route::get('color/status/{id}', [ColorController::class, 'statusUpdate']);
+
+    // sizes
+    Route::resource('size', SizeController::class, ['names' => 'admin.size']);
+    Route::get('size/get/data', [SizeController::class, 'getData'])->name('admin.size.get-data');
+    Route::get('size/status/{id}', [SizeController::class, 'statusUpdate']);
 });

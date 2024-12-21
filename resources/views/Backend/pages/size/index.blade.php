@@ -3,19 +3,18 @@
     <div class="card">
         <div class="card-title option_sidebar"
             style="display: flex;justify-content: space-between;align-items: center;color: #566a7f;padding: 1.5rem;opacity: 0.8;margin-bottom: -40px;">
-            <h5>Manage Colors Section</h5>
+            <h5>Manage Sizes Section</h5>
             <button type="button" class="text-right btn btn-primary" data-bs-toggle="modal" data-bs-target="#Add">Add
-                Color</button>
+                Size</button>
         </div>
 
         <div class="card-body">
             <div class="table-responsive text-nowrap">
-                <table class="table" id="colorTable" width="100%" style="text-align: center;">
+                <table class="table" id="sizeTable" width="100%" style="text-align: center;">
                     <thead>
                         <tr>
                             <th class="text-center">SL</th>
-                            <th class="text-center">Color Name</th>
-                            <th class="text-center">Color Code</th>
+                            <th class="text-center">Size Name</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -32,7 +31,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel3">Add Color Data</h5>
+                        <h5 class="modal-title" id="exampleModalLabel3">Add Size Data</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
@@ -44,18 +43,10 @@
                             <div class="row">
 
                                 <div class="mb-3 col-12">
-                                    <label for="color_name" class="form-label">Color Name</label>
-                                    <input type="text" id="color_name" class="form-control" name="color_name"
+                                    <label for="size_name" class="form-label">Size Name</label>
+                                    <input type="text" id="size_name" class="form-control" name="size_name"
                                         placeholder="Enter here.....">
-                                    @error('color_name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3 col-12">
-                                    <label for="color_code" class="form-label">Color Code</label>
-                                    <input type="color" id="" class="form-control" name="color_code">
-                                    @error('color_code')
+                                    @error('size_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -85,7 +76,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel3">Edit Color </h5>
+                        <h5 class="modal-title" id="exampleModalLabel3">Edit Size </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
@@ -100,18 +91,10 @@
                             <div class="row">
 
                                 <div class="mb-3 col-12">
-                                    <label for="up_color_name" class="form-label">Color Name</label>
-                                    <input type="text" id="up_color_name" class="form-control" name="color_name"
+                                    <label for="up_size_name" class="form-label">Size Name</label>
+                                    <input type="text" id="up_size_name" class="form-control" name="size_name"
                                         placeholder="Enter here.....">
-                                    @error('color_name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3 col-12">
-                                    <label for="up_color_code" class="form-label">Color Code</label>
-                                    <input type="color" id="up_color_code" class="form-control" name="color_code">
-                                    @error('color_code')
+                                    @error('size_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -142,22 +125,19 @@
     <script>
         $(document).ready(function() {
             var token = $("input[name='_token']").val();
-            // color list
-            let colorTable = $('#colorTable').DataTable({
+            // size list
+            let sizeTable = $('#sizeTable').DataTable({
                 order: [
                     [0, 'asc']
                 ],
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.color.get-data') }}",
+                ajax: "{{ route('admin.size.get-data') }}",
                 columns: [{
                         data: 'id',
                     },
                     {
-                        data: 'color_name'
-                    },
-                    {
-                        data: 'color_code'
+                        data: 'size_name'
                     },
                     {
                         data: 'status'
@@ -171,13 +151,13 @@
                 ]
             });
 
-            // add color
+            // add size
             $('#createForm').submit(function(e) {
                 e.preventDefault();
 
                 $.ajax({
                     type: 'POST',
-                    url: "{{ route('admin.color.store') }}",
+                    url: "{{ route('admin.size.store') }}",
                     processData: false,
                     contentType: false,
                     data: new FormData(this),
@@ -186,7 +166,7 @@
                         if (data == 'error') {
                             swal({
                                 icon: 'error',
-                                title: 'Can not save Color',
+                                title: 'Can not save Size',
                                 text: 'Please fill Title Name',
                                 buttons: true,
                                 buttons: "Thanks",
@@ -199,7 +179,7 @@
                             });
 
                             $('#createForm')[0].reset();
-                            colorTable.ajax.reload();
+                            sizeTable.ajax.reload();
                             // window.location.reload();
                         }
                         // Close the modal
@@ -211,17 +191,16 @@
                 });
             });
 
-            // edit color
+            // edit size
             $(document).on('click', '#editButton', function() {
                 let id = $(this).data('id');
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/color/' + id + '/edit',
+                    url: '/adara/admin/size/' + id + '/edit',
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);
-                        $('#updateForm').find('#up_color_name').val(data.color_name);
-                        $('#updateForm').find('#up_color_code').val(data.color_code);
+                        $('#updateForm').find('#up_size_name').val(data.size_name);
                         $('#updateForm').find('#status').val(data.status);
                     },
                     error: function(error) {
@@ -230,7 +209,7 @@
                 });
             });
 
-            // update color
+            // update size
             $('#updateForm').submit(function(e) {
                 e.preventDefault();
 
@@ -242,7 +221,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: "{{ url('admin/color') }}/" + id,
+                    url: "{{ url('admin/size') }}/" + id,
                     data: formData,
                     processData: false,
                     contentType: false,
@@ -252,21 +231,21 @@
                             console.log('error');
                             Swal.fire({
                                 icon: 'error',
-                                title: 'Can not update Color',
+                                title: 'Can not update Size',
                                 text: 'Please fill Title Name',
                                 buttons: true,
                                 buttons: "Thanks",
                             });
                         } else {
                             Swal.fire({
-                                title: "Color update successfully !",
+                                title: "Size update successfully !",
                                 icon: "success",
                             });
                             var myModalEl = document.getElementById('Edit');
                             var modal = bootstrap.Modal.getInstance(
                                 myModalEl); // Get the modal instance
                             modal.hide(); // Hide the modal
-                            colorTable.ajax.reload();
+                            sizeTable.ajax.reload();
 
                         }
                     },
@@ -276,7 +255,7 @@
                 });
             });
 
-            // delete color
+            // delete size
             $(document).on('click', '#deleteButton', function() {
                 let id = $(this).data('id');
                 Swal.fire({
@@ -291,15 +270,15 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'DELETE',
-                            url: 'color/' + id,
+                            url: 'size/' + id,
                             data: {
                                 '_token': token
                             },
                             success: function(data) {
-                                Swal.fire("Color has been deleted!", {
+                                Swal.fire("Size has been deleted!", {
                                     icon: "success",
                                 });
-                                colorTable.ajax.reload();
+                                sizeTable.ajax.reload();
                             },
                             error: function(error) {
                                 console.log('error');
@@ -317,7 +296,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: 'color/status/' + id,
+                    url: 'size/status/' + id,
                     data: {
                         id: id,
                         status: status,
@@ -328,7 +307,7 @@
                             title: "Status updated !",
                             icon: "success",
                         });
-                        colorTable.ajax.reload();
+                        sizeTable.ajax.reload();
                     },
                     error: function(error) {
                         console.log('error');
