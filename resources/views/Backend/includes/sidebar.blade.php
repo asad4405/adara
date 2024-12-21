@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="{{ route('index') }}" class="app-brand-link">
+        <a href="{{ route('admin.dashboard') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -58,7 +58,7 @@
     <ul class="py-1 menu-inner">
         <!-- Dashboard -->
         <li class="menu-item active">
-            <a href="{{ route('index') }}" class="menu-link">
+            <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -116,7 +116,50 @@
         </li>
 
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Pages</span>
+            <span class="menu-header-text">Setting</span>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cog"></i>
+                <div data-i18n="Account Settings">Site Setting</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.generalSetting.index') }}" class="menu-link">
+                        <div data-i18n="Account">General Setting</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="pages-account-settings-account.html" class="menu-link">
+                        <div data-i18n="Account">Pixels Setting</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="pages-account-settings-notifications.html" class="menu-link">
+                        <div data-i18n="Notifications">Social Media</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="pages-account-settings-connections.html" class="menu-link">
+                        <div data-i18n="Connections">Contact</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="pages-account-settings-connections.html" class="menu-link">
+                        <div data-i18n="Connections">Create Page</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="pages-account-settings-connections.html" class="menu-link">
+                        <div data-i18n="Connections">Shipping Charge</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="pages-account-settings-connections.html" class="menu-link">
+                        <div data-i18n="Connections">Order Status</div>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

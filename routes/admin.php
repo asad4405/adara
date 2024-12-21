@@ -5,12 +5,13 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\SizeController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
     // categories
     Route::get('/category/manage', [CategoryController::class, 'manage'])->name('category.manage');
@@ -46,4 +47,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('size', SizeController::class, ['names' => 'admin.size']);
     Route::get('size/get/data', [SizeController::class, 'getData'])->name('admin.size.get-data');
     Route::get('size/status/{id}', [SizeController::class, 'statusUpdate']);
+
+    // general setting
+    Route::resource('general/setting', GeneralSettingController::class, ['names' => 'admin.generalSetting']);
+    Route::get('general/setting/get/data', [GeneralSettingController::class, 'getData'])->name('admin.generalSetting.get-data');
+    Route::get('general/setting/status/{id}', [GeneralSettingController::class, 'statusUpdate']);
 });
