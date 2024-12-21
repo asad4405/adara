@@ -88,6 +88,7 @@ class SizeController extends Controller
         $size->status = $request->status;
 
         $size->update();
+        
         return response()->json($size, 200);
     }
 
