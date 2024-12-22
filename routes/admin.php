@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\PixelController;
 use App\Http\Controllers\Backend\SizeController;
+use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,4 +58,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('pixel/setting', PixelController::class, ['names' => 'admin.pixelSetting']);
     Route::get('pixel/setting/get/data', [PixelController::class, 'getData'])->name('admin.pixelSetting.get-data');
     Route::get('pixel/setting/status/{id}', [PixelController::class, 'statusUpdate']);
+
+    // social media
+    Route::resource('social-media', SocialMediaController::class, ['names' => 'admin.social-media']);
+    Route::get('social-media/get/data', [SocialMediaController::class, 'getData'])->name('admin.social-media.get-data');
+    Route::get('social-media/status/{id}', [SocialMediaController::class, 'statusUpdate']);
 });
