@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
+use App\Http\Controllers\Backend\PixelController;
 use App\Http\Controllers\Backend\SizeController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use Illuminate\Support\Facades\Route;
@@ -51,5 +52,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     // general setting
     Route::resource('general/setting', GeneralSettingController::class, ['names' => 'admin.generalSetting']);
     Route::get('general/setting/get/data', [GeneralSettingController::class, 'getData'])->name('admin.generalSetting.get-data');
-    Route::get('general/setting/status/{id}', [GeneralSettingController::class, 'statusUpdate']);
+
+    // pixel setting
+    Route::resource('pixel/setting', PixelController::class, ['names' => 'admin.pixelSetting']);
+    Route::get('pixel/setting/get/data', [PixelController::class, 'getData'])->name('admin.pixelSetting.get-data');
+    Route::get('pixel/setting/status/{id}', [PixelController::class, 'statusUpdate']);
 });

@@ -130,7 +130,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
+                    <a href="{{ route('admin.pixelSetting.index') }}" class="menu-link">
                         <div data-i18n="Account">Pixels Setting</div>
                     </a>
                 </li>
