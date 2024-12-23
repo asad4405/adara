@@ -203,7 +203,7 @@
                 });
             });
 
-            // update size
+            // update general setting
             $('#updateForm').submit(function(e) {
                 e.preventDefault();
 
