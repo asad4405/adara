@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CreatePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\PixelController;
+use App\Http\Controllers\Backend\ShippingChargeController;
 use App\Http\Controllers\Backend\SizeController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\SubcategoryController;
@@ -74,4 +75,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('create-page', CreatePageController::class, ['names' => 'admin.create-page']);
     Route::get('create-page/get/data', [CreatePageController::class, 'getData'])->name('admin.create-page.get-data');
     Route::get('create-page/status/{id}', [CreatePageController::class, 'statusUpdate']);
+
+    // shipping charge
+    Route::resource('shipping-charge', ShippingChargeController::class, ['names' => 'admin.shipping-charge']);
+    Route::get('shipping-charge/get/data', [ShippingChargeController::class, 'getData'])->name('admin.shipping-charge.get-data');
+    Route::get('shipping-charge/status/{id}', [ShippingChargeController::class, 'statusUpdate']);
 });
