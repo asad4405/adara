@@ -27,16 +27,16 @@ class ContactController extends Controller
             ->addColumn('email', function ($contact) {
                 return $contact->email;
             })
-            ->addColumn('status', function ($color) {
-                if ($color->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $color->id . '" data-status="' . $color->status . '">Active</span>';
+            ->addColumn('status', function ($contact) {
+                if ($contact->status == 1) {
+                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $contact->id . '" data-status="' . $contact->status . '">Active</span>';
                 } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $color->id . '" data-status="' . $color->status . '">Deactive</span>';
+                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $contact->id . '" data-status="' . $contact->status . '">Deactive</span>';
                 }
             })
-            ->addColumn('action', function ($color) {
+            ->addColumn('action', function ($contact) {
                 return
-                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $color->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>';
+                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $contact->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>';
             })
             ->rawColumns(['phone', 'email', 'status', 'action'])
             ->make(true);

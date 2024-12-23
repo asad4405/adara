@@ -145,7 +145,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="pages-account-settings-connections.html" class="menu-link">
+                    <a href="{{ route('admin.create-page.index') }}" class="menu-link">
                         <div data-i18n="Connections">Create Page</div>
                     </a>
                 </li>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\CreatePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\PixelController;
@@ -68,5 +69,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     // contact us
     Route::resource('contact-us', ContactController::class, ['names' => 'admin.contact-us']);
     Route::get('contact-us/get/data', [ContactController::class, 'getData'])->name('admin.contact-us.get-data');
-    Route::get('contact-us/status/{id}', [ContactController::class, 'statusUpdate']);
+
+    // create page
+    Route::resource('create-page', CreatePageController::class, ['names' => 'admin.create-page']);
+    Route::get('create-page/get/data', [CreatePageController::class, 'getData'])->name('admin.create-page.get-data');
+    Route::get('create-page/status/{id}', [CreatePageController::class, 'statusUpdate']);
 });
