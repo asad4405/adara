@@ -140,7 +140,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="pages-account-settings-connections.html" class="menu-link">
+                    <a href="{{ route('admin.contact-us.index') }}" class="menu-link">
                         <div data-i18n="Connections">Contact</div>
                     </a>
                 </li>

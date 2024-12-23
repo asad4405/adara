@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\ColorController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\PixelController;
@@ -63,4 +64,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('social-media', SocialMediaController::class, ['names' => 'admin.social-media']);
     Route::get('social-media/get/data', [SocialMediaController::class, 'getData'])->name('admin.social-media.get-data');
     Route::get('social-media/status/{id}', [SocialMediaController::class, 'statusUpdate']);
+
+    // contact us
+    Route::resource('contact-us', ContactController::class, ['names' => 'admin.contact-us']);
+    Route::get('contact-us/get/data', [ContactController::class, 'getData'])->name('admin.contact-us.get-data');
+    Route::get('contact-us/status/{id}', [ContactController::class, 'statusUpdate']);
 });
