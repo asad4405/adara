@@ -191,7 +191,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="pages-account-settings-notifications.html" class="menu-link">
+                    <a href="{{ route('admin.banner.index') }}" class="menu-link">
                         <div data-i18n="Notifications">Banner & Ads</div>
                     </a>
                 </li>

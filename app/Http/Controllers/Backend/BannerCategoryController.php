@@ -33,8 +33,7 @@ class BannerCategoryController extends Controller
             })
             ->addColumn('action', function ($banner_category) {
                 return
-                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $banner_category->id . '" data-bs-toggle="modal" data-bs-target="#Edit">Edit</a>
-                <a href="#" type="button" id="deleteButton" data-id="' . $banner_category->id . '" class="btn btn-danger btn-sm" >Delete</a>';
+                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $banner_category->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>';
             })
             ->rawColumns(['category_name', 'status', 'action'])
             ->make(true);
@@ -98,10 +97,7 @@ class BannerCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $banner_category = BannerCategory::findOrFail($id);
-        $banner_category->delete();
-
-        return response()->json($banner_category, 200);
+        //
     }
 
     public function statusUpdate($id)

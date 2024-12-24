@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\BannerCategoryController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildcategoryController;
@@ -93,9 +94,14 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::get('google/tag-manager/get/data', [GoogleTagManagerController::class, 'getData'])->name('admin.google-tag-manager.get-data');
     Route::get('google/tag-manager/status/{id}', [GoogleTagManagerController::class, 'statusUpdate']);
 
-    // banner
+    // banner and ads
     // banner category
     Route::resource('banner/category', BannerCategoryController::class, ['names' => 'admin.banner-category']);
     Route::get('banner/category/get/data', [BannerCategoryController::class, 'getData'])->name('admin.banner-category.get-data');
     Route::get('banner/category/status/{id}', [BannerCategoryController::class, 'statusUpdate']);
+
+    // banner
+    Route::resource('banner', BannerController::class, ['names' => 'admin.banner']);
+    Route::get('banner/get/data', [BannerController::class, 'getData'])->name('admin.banner.get-data');
+    Route::get('banner/status/{id}', [BannerController::class, 'statusUpdate']);
 });
