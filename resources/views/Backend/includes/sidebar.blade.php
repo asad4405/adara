@@ -163,6 +163,24 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-receipt"></i>
+                <div data-i18n="Account Settings">G. Pixel and GTM</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.google-tag-manager.index') }}" class="menu-link">
+                        <div data-i18n="Account">Tag Manager</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('admin.pixelSetting.index') }}" class="menu-link">
+                        <div data-i18n="Notifications">Pixel Manage</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Account Settings</div>
             </a>

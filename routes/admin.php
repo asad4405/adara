@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\CreatePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
+use App\Http\Controllers\Backend\GoogleTagManagerController;
 use App\Http\Controllers\Backend\OrderStatusController;
 use App\Http\Controllers\Backend\PixelController;
 use App\Http\Controllers\Backend\ShippingChargeController;
@@ -85,4 +86,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     // order status
     Route::resource('order/status', OrderStatusController::class, ['names' => 'admin.order-status']);
     Route::get('order/status/get/data', [OrderStatusController::class, 'getData'])->name('admin.order-status.get-data');
+
+    // GTM
+    Route::resource('google/tag-manager', GoogleTagManagerController::class, ['names' => 'admin.google-tag-manager']);
+    Route::get('google/tag-manager/get/data', [GoogleTagManagerController::class, 'getData'])->name('admin.google-tag-manager.get-data');
+    Route::get('google/tag-manager/status/{id}', [GoogleTagManagerController::class, 'statusUpdate']);
 });
