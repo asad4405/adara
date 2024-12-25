@@ -1,0 +1,43 @@
+.custom-toggle {
+    position: relative;
+    width: 50px;
+    height: 25px;
+}
+
+.custom-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.toggle-slider::before {
+    content: "";
+    position: absolute;
+    height: 21px;
+    width: 21px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.4s;
+}
+
+.custom-toggle input:checked+.toggle-slider {
+    background-color: #2196F3;
+}
+
+.custom-toggle input:checked+.toggle-slider::before {
+    transform: translateX(25px);
+}

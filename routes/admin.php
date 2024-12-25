@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\CreatePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\GoogleTagManagerController;
+use App\Http\Controllers\Backend\MailGatewayController;
 use App\Http\Controllers\Backend\OrderStatusController;
 use App\Http\Controllers\Backend\PixelController;
 use App\Http\Controllers\Backend\ShippingChargeController;
@@ -104,4 +105,10 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('banner', BannerController::class, ['names' => 'admin.banner']);
     Route::get('banner/get/data', [BannerController::class, 'getData'])->name('admin.banner.get-data');
     Route::get('banner/status/{id}', [BannerController::class, 'statusUpdate']);
+
+
+    // =============================== API Integration ============================ //
+    // mail gateway
+    Route::resource('mail/gateway', MailGatewayController::class, ['names' => 'admin.mail-gateway']);
+
 });

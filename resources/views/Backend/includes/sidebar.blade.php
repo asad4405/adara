@@ -163,6 +163,34 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-code-alt"></i>
+                <div data-i18n="Account Settings">API Integration</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.mail-gateway.index') }}" class="menu-link">
+                        <div data-i18n="Account">Mail Gateway</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="" class="menu-link">
+                        <div data-i18n="Notifications">Payment Gateway</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="" class="menu-link">
+                        <div data-i18n="Notifications">SMS Gateway</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="" class="menu-link">
+                        <div data-i18n="Notifications">Courier API</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-receipt"></i>
                 <div data-i18n="Account Settings">G. Pixel and GTM</div>
             </a>

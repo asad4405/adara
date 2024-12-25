@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('public/Backend') }}/vendor/css/theme-default.css"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('public/Backend') }}/css/demo.css" />
+    <link rel="stylesheet" href="{{ asset('public/Backend') }}/css/style.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('public/Backend') }}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
