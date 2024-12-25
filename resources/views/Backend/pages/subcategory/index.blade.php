@@ -1,7 +1,7 @@
 @extends('Backend.layouts.master')
 @section('body-content')
     <div class="card">
-        <div class="card-title">
+        <div class="card-title" style="display: flex;justify-content: space-between;align-items: center;color: #566a7f;padding: 1.5rem;opacity: 0.8;margin-bottom: -40px;">
             <h5>Manage Subcategory Section</h5>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Add">Add Subategory</button>
         </div>
@@ -55,8 +55,8 @@
                                 </div>
 
                                 <div class="mb-3 col-12">
-                                    <label for="category_name" class="form-label">Subcategory Name</label>
-                                    <input type="text" id="subategory_name" class="form-control" name="subcategory_name"
+                                    <label for="subcategory_name" class="form-label">Subcategory Name</label>
+                                    <input type="text" id="subcategory_name" class="form-control" name="subcategory_name"
                                         placeholder="Enter here.....">
                                     @error('subcategory_name')
                                         <span class="text-danger">{{ $message }}</span>
@@ -67,9 +67,6 @@
                                     <label for="image" class="form-label">Subategory Image</label>
                                     <input type="file" id="" class="form-control" name="image"
                                         placeholder="Enter here.....">
-                                    @error('image')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
 
                                 <div class="mb-3 col-12">
@@ -80,7 +77,7 @@
 
                                 <div class="mb-3 col-12">
                                     <label for="meta_description" class="form-label">Meta Description</label>
-                                    <textarea name="meta_description" id="" class="form-control" rows="6"></textarea>
+                                    <textarea name="meta_description" id="meta_description" class="form-control" rows="6"></textarea>
                                 </div>
 
                                 <div class="mb-3 col-12">
@@ -135,7 +132,7 @@
                                 </div>
 
                                 <div class="mb-3 col-12">
-                                    <label for="category_name" class="form-label">Subcategory Name</label>
+                                    <label for="up_subcategory_name" class="form-label">Subcategory Name</label>
                                     <input type="text" id="up_subcategory_name" class="form-control"
                                         name="subcategory_name" placeholder="Enter here.....">
                                     @error('subcategory_name')
@@ -145,11 +142,8 @@
 
                                 <div class="mb-3 col-12" id="showImage">
                                     <label for="image" class="form-label">Subategory Image</label>
-                                    <input type="file" id="" class="form-control" name="image"
+                                    <input type="file" id="image" class="form-control" name="image"
                                         placeholder="Enter here.....">
-                                    @error('image')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
 
                                 <div class="mb-3 col-12">
@@ -159,12 +153,12 @@
                                 </div>
 
                                 <div class="mb-3 col-12">
-                                    <label for="meta_description" class="form-label">Meta Description</label>
+                                    <label for="up_meta_description" class="form-label">Meta Description</label>
                                     <textarea id="up_meta_description" name="meta_description" id="" class="form-control" rows="6"></textarea>
                                 </div>
 
                                 <div class="mb-3 col-12">
-                                    <label for="status" class="form-label">Status</label>
+                                    <label for="up_status" class="form-label">Status</label>
                                     <select name="status" id="up_status" class="form-select">
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
@@ -251,7 +245,6 @@
 
                             $('#createForm')[0].reset();
                             subcategoryTable.ajax.reload();
-                            // window.location.reload();
                         }
                         // Close the modal
                         var myModalEl = document.getElementById('Add');
@@ -265,7 +258,7 @@
                 });
             });
 
-            //edit service
+            //edit subcategory
             $(document).on('click', '#editButton', function() {
                 let id = $(this).data('id');
 

@@ -39,7 +39,7 @@ class GeneralSettingController extends Controller
                 return $general_setting->wp_number;
             })
             ->addColumn('action', function ($general_setting) {
-                return '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $general_setting->id . '" data-bs-toggle="modal" data-bs-target="#Edit">Edit</a>';
+                return '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $general_setting->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>';
             })
             ->rawColumns(['name', 'white_logo', 'dark_logo', 'favicon', 'action'])
             ->make(true);

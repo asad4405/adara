@@ -33,8 +33,8 @@ class SizeController extends Controller
             })
             ->addColumn('action', function ($size) {
                 return
-                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $size->id . '" data-bs-toggle="modal" data-bs-target="#Edit">Edit</a>
-                <a href="#" type="button" id="deleteButton" data-id="' . $size->id . '" class="btn btn-danger btn-sm" >Delete</a>';
+                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $size->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="#" type="button" id="deleteButton" data-id="' . $size->id . '" class="btn btn-danger btn-sm" ><i class="fa-solid fa-trash"></i></a>';
             })
             ->rawColumns(['size_name', 'status', 'action'])
             ->make(true);
@@ -88,7 +88,7 @@ class SizeController extends Controller
         $size->status = $request->status;
 
         $size->update();
-        
+
         return response()->json($size, 200);
     }
 

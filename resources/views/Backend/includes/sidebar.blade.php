@@ -173,13 +173,13 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">
-                        <div data-i18n="Notifications">Payment Gateway</div>
+                    <a href="{{ route('admin.sms-gateway.index') }}" class="menu-link">
+                        <div data-i18n="Notifications">SMS Gateway</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('admin.sms-gateway.index') }}" class="menu-link">
-                        <div data-i18n="Notifications">SMS Gateway</div>
+                    <a href="" class="menu-link">
+                        <div data-i18n="Notifications">Payment Gateway</div>
                     </a>
                 </li>
                 <li class="menu-item">

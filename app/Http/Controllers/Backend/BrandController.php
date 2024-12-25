@@ -37,8 +37,8 @@ class BrandController extends Controller
                 }
             })
             ->addColumn('action', function ($brand) {
-                return '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $brand->id . '" data-bs-toggle="modal" data-bs-target="#Edit">Edit</a>
-            <a href="#" type="button" id="deleteButton" data-id="' . $brand->id . '" class="btn btn-danger btn-sm" >Delete</a>';
+                return '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $brand->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a href="#" type="button" id="deleteButton" data-id="' . $brand->id . '" class="btn btn-danger btn-sm" ><i class="fa-solid fa-trash"></i></a>';
             })
             ->rawColumns(['brand_name', 'image', 'status', 'action'])
             ->make(true);

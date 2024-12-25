@@ -43,8 +43,8 @@ class SocialMediaController extends Controller
             })
             ->addColumn('action', function ($social_media) {
                 return
-                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $social_media->id . '" data-bs-toggle="modal" data-bs-target="#Edit">Edit</a>
-                <a href="#" type="button" id="deleteButton" data-id="' . $social_media->id . '" class="btn btn-danger btn-sm" >Delete</a>';
+                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $social_media->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="#" type="button" id="deleteButton" data-id="' . $social_media->id . '" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>';
             })
             ->rawColumns(['name', 'icon', 'link', 'color', 'status', 'action'])
             ->make(true);

@@ -200,7 +200,6 @@
 
                             $('#createForm')[0].reset();
                             colorTable.ajax.reload();
-                            // window.location.reload();
                         }
                         // Close the modal
                         var myModalEl = document.getElementById('Add');

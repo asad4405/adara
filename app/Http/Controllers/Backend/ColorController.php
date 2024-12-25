@@ -36,8 +36,8 @@ class ColorController extends Controller
             })
             ->addColumn('action', function ($color) {
                 return
-                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $color->id . '" data-bs-toggle="modal" data-bs-target="#Edit">Edit</a>
-                <a href="#" type="button" id="deleteButton" data-id="' . $color->id . '" class="btn btn-danger btn-sm" >Delete</a>';
+                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $color->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="#" type="button" id="deleteButton" data-id="' . $color->id . '" class="btn btn-danger btn-sm" ><i class="fa-solid fa-trash"></i></a>';
             })
             ->rawColumns(['color_name', 'color_code', 'status', 'action'])
             ->make(true);

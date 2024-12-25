@@ -58,14 +58,14 @@
                                     <label for="childcategory_name" class="form-label">Childcategory Name</label>
                                     <input type="text" id="childcategory_name" class="form-control" name="childcategory_name"
                                         placeholder="Enter here.....">
-                                    @error('category_name')
+                                    @error('childcategory_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
                                 <div class="mb-3 col-12">
                                     <label for="image" class="form-label">Childcategory Image</label>
-                                    <input type="file" id="" class="form-control" name="image"
+                                    <input type="file" id="image" class="form-control" name="image"
                                         placeholder="Enter here.....">
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>

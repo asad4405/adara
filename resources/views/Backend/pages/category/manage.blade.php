@@ -1,7 +1,8 @@
 @extends('Backend.layouts.master')
 @section('body-content')
     <div class="card">
-        <div class="card-title">
+        <div class="card-title"
+            style="display: flex;justify-content: space-between;align-items: center;color: #566a7f;padding: 1.5rem;opacity: 0.8;margin-bottom: -40px;">
             <h5>Manage Category Section</h5>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Add">Add Category</button>
         </div>
@@ -60,11 +61,8 @@
 
                                 <div class="mb-3 col-12">
                                     <label for="image" class="form-label">Category Image</label>
-                                    <input type="file" id="" class="form-control" name="image"
+                                    <input type="file" id="image" class="form-control" name="image"
                                         placeholder="Enter here.....">
-                                    @error('image')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
 
                                 <div class="mb-3 col-12">
@@ -84,11 +82,14 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
+                                    @error('status')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3 col-12">
-                                    <label for="status" class="form-label">Front View</label>
-                                    <select name="status" id="status" class="form-select">
+                                    <label for="front_view" class="form-label">Front View</label>
+                                    <select name="front_view" id="front_view" class="form-select">
                                         <option value="1">Show</option>
                                         <option value="0">Hide</option>
                                     </select>
@@ -158,6 +159,9 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
+                                    @error('status')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3 col-12">
@@ -166,6 +170,7 @@
                                         <option value="1">Show</option>
                                         <option value="0">Hide</option>
                                     </select>
+
                                 </div>
 
                                 <div class="modal-footer">

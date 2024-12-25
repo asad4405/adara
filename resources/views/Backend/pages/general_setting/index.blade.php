@@ -183,7 +183,7 @@
                         $('#updateForm').find('#up_wp_number').val(data.wp_number);
                         $('#updateForm').find('#up_messenger').val(data.messenger);
                         $('#updateForm').find('#up_copyright').val(data.copyright);
-                        $('#updateForm').find('#up_description').val(data.white_logo);
+                        $('#updateForm').find('#up_description').val(data.description);
                         $('#whiteLogo').find('img').remove();
                         $('#whiteLogo').append(`
                         <img src={{ asset('`+ data.white_logo +`') }} alt="" style="width: 75px;">

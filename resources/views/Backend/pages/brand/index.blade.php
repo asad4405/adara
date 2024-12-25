@@ -54,7 +54,7 @@
 
                                 <div class="mb-3 col-12">
                                     <label for="image" class="form-label">Brand Image</label>
-                                    <input type="file" id="" class="form-control" name="image"
+                                    <input type="file" id="image" class="form-control" name="image"
                                         placeholder="Enter here.....">
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
@@ -202,7 +202,6 @@
 
                             $('#createForm')[0].reset();
                             brandTable.ajax.reload();
-                            // window.location.reload();
                         }
                         // Close the modal
                         var myModalEl = document.getElementById('Add');
