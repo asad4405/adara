@@ -3,62 +3,42 @@
     <div class="card">
         <div class="card-title option_sidebar"
             style="display: flex;justify-content: space-between;align-items: center;color: #566a7f;padding: 1.5rem;opacity: 0.8;margin-bottom: -40px;">
-            <h5>Manage Mail Gateway Section</h5>
+            <h5>Manage Sms Gateway Section</h5>
         </div>
 
         <div class="card-body">
-            <form action="{{ route('admin.mail-gateway.update', $mail_getway->id) }}" method="POST">
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+            <form action="{{ route('admin.sms-gateway.update',$sms_gateway->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="mb-3">
-                            <label for="" class="form-label">Mail Mailer</label>
-                            <input type="text" class="form-control" name="mail_mailer"
-                                value="{{ $mail_getway->mail_mailer }}">
+                            <label for="" class="form-label">Url *</label>
+                            <input type="text" class="form-control" name="url" value="{{ $sms_gateway->url }}">
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="mb-3">
-                            <label for="" class="form-label">mail_host</label>
-                            <input type="text" class="form-control" name="mail_host"
-                                value="{{ $mail_getway->mail_host }}">
+                            <label for="" class="form-label">Api Key *</label>
+                            <input type="text" class="form-control" name="api_key" value="{{ $sms_gateway->api_key }}">
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="mb-3">
-                            <label for="" class="form-label">mail_port</label>
-                            <input type="text" class="form-control" name="mail_port"
-                                value="{{ $mail_getway->mail_port }}">
+                            <label for="" class="form-label">Sender Id</label>
+                            <input type="text" class="form-control" name="senderid" value="{{ $sms_gateway->senderid }}">
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label for="" class="form-label">mail_username</label>
-                            <input type="text" class="form-control" name="mail_username"
-                                value="{{ $mail_getway->mail_username }}">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label for="" class="form-label">mail_password</label>
-                            <input type="text" class="form-control" name="mail_password"
-                                value="{{ $mail_getway->mail_password }}">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label for="" class="form-label">mail_encryption</label>
-                            <input type="text" class="form-control" name="mail_encryption"
-                                value="{{ $mail_getway->mail_encryption }}">
-                        </div>
-                    </div>
+
                     <div class="col-lg-3">
                         <div class="mb-3">
                             <label for="status" class="d-block">Status</label>
                             <label class="custom-toggle">
-                                <input type="checkbox" value="1" @if ($mail_getway->status == 1) checked @endif
+                                <input type="checkbox" value="1" @if ($sms_gateway->status == 1) checked @endif
                                     name="status">
                                 <span class="toggle-slider"></span>
                             </label>
@@ -68,7 +48,7 @@
                         <div class="mb-3">
                             <label for="order" class="d-block">Order Confirm</label>
                             <label class="custom-toggle">
-                                <input type="checkbox" value="1" @if ($mail_getway->order == 1) checked @endif
+                                <input type="checkbox" value="1" @if ($sms_gateway->order == 1) checked @endif
                                     name="order">
                                 <span class="toggle-slider"></span>
                             </label>
@@ -78,7 +58,7 @@
                         <div class="mb-3">
                             <label for="forgot_pass" class="d-block">Forgot Password</label>
                             <label class="custom-toggle">
-                                <input type="checkbox" value="1" @if ($mail_getway->forgot_pass == 1) checked @endif
+                                <input type="checkbox" value="1" @if ($sms_gateway->forgot_pass == 1) checked @endif
                                     name="forgot_pass">
                                 <span class="toggle-slider"></span>
                             </label>
@@ -88,7 +68,7 @@
                         <div class="mb-3">
                             <label for="password_g" class="d-block">Password Generator</label>
                             <label class="custom-toggle">
-                                <input type="checkbox" value="1" @if ($mail_getway->password_g == 1) checked @endif
+                                <input type="checkbox" value="1" @if ($sms_gateway->password_g == 1) checked @endif
                                     name="password_g">
                                 <span class="toggle-slider"></span>
                             </label>

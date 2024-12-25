@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\OrderStatusController;
 use App\Http\Controllers\Backend\PixelController;
 use App\Http\Controllers\Backend\ShippingChargeController;
 use App\Http\Controllers\Backend\SizeController;
+use App\Http\Controllers\Backend\SmsGatewayController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use Illuminate\Support\Facades\Route;
@@ -110,5 +111,8 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     // =============================== API Integration ============================ //
     // mail gateway
     Route::resource('mail/gateway', MailGatewayController::class, ['names' => 'admin.mail-gateway']);
+
+    // sms gateway
+    Route::resource('sms/gateway', SmsGatewayController::class, ['names' => 'admin.sms-gateway']);
 
 });

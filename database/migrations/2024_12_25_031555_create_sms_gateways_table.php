@@ -11,18 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mail_gateways', function (Blueprint $table) {
+        Schema::create('sms_gateways', function (Blueprint $table) {
             $table->id();
-            $table->string('mail_mailer')->nullable();
-            $table->string('mail_host')->nullable();
-            $table->string('mail_port')->nullable();
-            $table->string('mail_username')->nullable();
-            $table->string('mail_password')->nullable();
-            $table->string('mail_encryption')->nullable();
+            $table->string('url')->nullable();
+            $table->string('api_key')->nullable();
+            $table->string('senderid')->nullable();
             $table->integer('order')->nullable();
             $table->integer('forgot_pass')->nullable();
             $table->integer('password_g')->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mail_gateways');
+        Schema::dropIfExists('sms_gateways');
     }
 };
