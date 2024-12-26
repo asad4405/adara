@@ -79,7 +79,7 @@ class CouponController extends Controller
         $coupon->amount = $request->amount;
         $coupon->validity = $request->validity;
         $coupon->limit = $request->limit;
-        $coupon->status = $request->status ? 1 : 0;
+        $coupon->status = $request->status == 1 ? 1 : 0;
 
         $coupon->save();
         return response()->json($coupon, 200);
@@ -114,6 +114,8 @@ class CouponController extends Controller
         $coupon->validity = $request->validity;
         $coupon->limit = $request->limit;
         $coupon->status = $request->status ? 1 : 0;
+        // $coupon->status = $request->status ? 1 : 0;
+        // $sms_gateway->status = $request->status ? 1 : 0;
 
         $coupon->update();
         return response()->json($coupon, 200);

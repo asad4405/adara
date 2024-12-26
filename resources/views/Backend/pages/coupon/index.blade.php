@@ -301,7 +301,7 @@
                         $('#updateForm').find('#up_limit').val(data.limit);
                         $('#updateForm').find('#up_status').val(data.status);
                         if(data.status == 1){
-                            $('#up_status').attr('checked', true)
+                            $('#up_status').attr('checked',true)
                         }
                     },
                     error: function(error) {

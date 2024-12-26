@@ -183,7 +183,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">
+                    <a href="{{ route('admin.payment-gateway.index') }}" class="menu-link">
                         <div data-i18n="Notifications">Payment Gateway</div>
                     </a>
                 </li>

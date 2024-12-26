@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\GoogleTagManagerController;
 use App\Http\Controllers\Backend\MailGatewayController;
 use App\Http\Controllers\Backend\OrderStatusController;
+use App\Http\Controllers\Backend\PaymentGatewayController;
 use App\Http\Controllers\Backend\PixelController;
 use App\Http\Controllers\Backend\ShippingChargeController;
 use App\Http\Controllers\Backend\SizeController;
@@ -120,5 +121,8 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
 
     // sms gateway
     Route::resource('sms/gateway', SmsGatewayController::class, ['names' => 'admin.sms-gateway']);
+
+    // payment gateway
+    Route::resource('payment/gateway', PaymentGatewayController::class, ['names' => 'admin.payment-gateway']);
 
 });
