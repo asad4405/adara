@@ -108,6 +108,11 @@
                     </a>
                 </li>
                 <li class="menu-item">
+                    <a href="{{ route('admin.coupon.index') }}" class="menu-link">
+                        <div data-i18n="Blank">Coupons</div>
+                    </a>
+                </li>
+                <li class="menu-item">
                     <a href="layouts-blank.html" class="menu-link">
                         <div data-i18n="Blank">Price Edit</div>
                     </a>

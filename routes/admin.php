@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CreatePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
@@ -58,6 +59,11 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('size', SizeController::class, ['names' => 'admin.size']);
     Route::get('size/get/data', [SizeController::class, 'getData'])->name('admin.size.get-data');
     Route::get('size/status/{id}', [SizeController::class, 'statusUpdate']);
+
+    // coupons
+    Route::resource('coupon', CouponController::class, ['names' => 'admin.coupon']);
+    Route::get('coupon/get/data', [CouponController::class, 'getData'])->name('admin.coupon.get-data');
+    Route::get('coupon/status/{id}', [CouponController::class, 'statusUpdate']);
 
     // general setting
     Route::resource('general/setting', GeneralSettingController::class, ['names' => 'admin.generalSetting']);
