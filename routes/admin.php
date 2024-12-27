@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\MailGatewayController;
 use App\Http\Controllers\Backend\OrderStatusController;
 use App\Http\Controllers\Backend\PaymentGatewayController;
 use App\Http\Controllers\Backend\PixelController;
+use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\ShippingChargeController;
 use App\Http\Controllers\Backend\SizeController;
 use App\Http\Controllers\Backend\SmsGatewayController;
@@ -125,4 +126,10 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('payment/gateway', PaymentGatewayController::class, ['names' => 'admin.payment-gateway']);
     // Courier
     Route::resource('courier/api', CourierApiController::class, ['names' => 'admin.courier-api']);
+
+    // ================================= Review ======================================== //
+    // review
+    Route::resource('review', ReviewController::class, ['names' => 'admin.review']);
+    Route::get('review/get/data', [ReviewController::class, 'getData'])->name('admin.review.get-data');
+    Route::get('review/status/{id}', [ReviewController::class, 'statusUpdate']);
 });

@@ -67,7 +67,7 @@
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <i class="menu-icon tf-icons bx bx-cube"></i>
                 <div data-i18n="Layouts">Products</div>
             </a>
 
@@ -127,7 +127,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="" class="menu-link">
+                    <a href="{{ route('admin.review.index') }}" class="menu-link">
                         <div data-i18n="Account">All Reviews</div>
                     </a>
                 </li>
@@ -295,7 +295,7 @@
             </ul>
         </li>
         <li class="menu-item">
-            <a href="{{ route('index') }}" class="menu-link menu-toggle">
+            <a href="{{ route('index') }}" class="menu-link" target="_blank">
                 <i class="menu-icon tf-icons bx bx-globe"></i>
                 <div data-i18n="Account Settings">Visit Website</div>
             </a>
@@ -303,15 +303,13 @@
         <!-- Misc -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
         <li class="menu-item">
-            <a href="https://facebook.com/123mdasaduzzaman" target="_blank"
-                class="menu-link">
+            <a href="https://facebook.com/123mdasaduzzaman" target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-support"></i>
                 <div data-i18n="Support">Support</div>
             </a>
         </li>
         <li class="menu-item">
-            <a href=""
-                target="_blank" class="menu-link">
+            <a href="" target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Documentation</div>
             </a>
