@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\CourierApiController;
 use App\Http\Controllers\Backend\CreatePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
@@ -118,11 +119,10 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     // =============================== API Integration ============================ //
     // mail gateway
     Route::resource('mail/gateway', MailGatewayController::class, ['names' => 'admin.mail-gateway']);
-
     // sms gateway
     Route::resource('sms/gateway', SmsGatewayController::class, ['names' => 'admin.sms-gateway']);
-
     // payment gateway
     Route::resource('payment/gateway', PaymentGatewayController::class, ['names' => 'admin.payment-gateway']);
-
+    // Courier
+    Route::resource('courier/api', CourierApiController::class, ['names' => 'admin.courier-api']);
 });

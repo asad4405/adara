@@ -188,7 +188,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">
+                    <a href="{{ route('admin.courier-api.index') }}" class="menu-link">
                         <div data-i18n="Notifications">Courier API</div>
                     </a>
                 </li>
