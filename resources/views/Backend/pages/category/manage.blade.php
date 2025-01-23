@@ -272,7 +272,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/category/edit/' + id,
+                    url: '{{ request()->root() }}/admin/category/edit/' + id,
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);

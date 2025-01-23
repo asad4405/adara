@@ -73,7 +73,7 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
+                    <a href="{{ route('admin.product.index') }}" class="menu-link">
                         <div data-i18n="Without menu">Product Manage</div>
                     </a>
                 </li>

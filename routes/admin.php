@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\MailGatewayController;
 use App\Http\Controllers\Backend\OrderStatusController;
 use App\Http\Controllers\Backend\PaymentGatewayController;
 use App\Http\Controllers\Backend\PixelController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\ShippingChargeController;
 use App\Http\Controllers\Backend\SizeController;
@@ -27,6 +28,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
+    // ================================ Product ======================================== //
+    Route::resource('product', ProductController::class, ['names' => 'admin.product']);
+    Route::get('product/get/data', [ProductController::class, 'getData'])->name('admin.product.get-data');
+    Route::get('product/status/{id}', [ProductController::class, 'statusUpdate']);
 
     // categories
     Route::get('/category/manage', [CategoryController::class, 'manage'])->name('category.manage');
