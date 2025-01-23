@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('product', ProductController::class, ['names' => 'admin.product']);
     Route::get('product/get/data', [ProductController::class, 'getData'])->name('admin.product.get-data');
     Route::get('product/status/{id}', [ProductController::class, 'statusUpdate']);
+    Route::get('products/price-edit', [ProductController::class, 'productPriceEdit'])->name('admin.product.price-edit');
+    Route::post('products/price-update', [ProductController::class, 'productPriceUpdate'])->name('admin.product.price-update');
 
     // categories
     Route::get('/category/manage', [CategoryController::class, 'manage'])->name('category.manage');

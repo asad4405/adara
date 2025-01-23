@@ -113,7 +113,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
+                    <a href="{{ route('admin.product.price-edit') }}" class="menu-link">
                         <div data-i18n="Blank">Price Edit</div>
                     </a>
                 </li>

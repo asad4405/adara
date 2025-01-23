@@ -221,4 +221,30 @@ class ProductController extends Controller
         $product->save();
         return response()->json($product, 200);
     }
+
+    public function productPriceEdit()
+    {
+        $products = Product::all();
+        return view('Backend.pages.product.productprice-edit',compact('products'));
+    }
+
+    public function productPriceUpdate(Request $request)
+    {
+        $ids = $request->ids;
+        $old_price = $request->old_price;
+        $new_price = $request->new_price;
+        $stock = $request->stock;
+        foreach($ids as $key=> $id){
+            $product = Product::findOrFail($id);
+
+            if ($product) {
+                $product->update([
+                    'old_price' => $old_price[$key],
+                    'new_price' => $new_price[$key],
+                    'stock' => $stock[$key],
+                ]);
+            }
+        }
+        return redirect()->back();
+    }
 }
