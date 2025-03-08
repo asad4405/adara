@@ -28,11 +28,17 @@ class ContactController extends Controller
                 return $contact->email;
             })
             ->addColumn('status', function ($contact) {
-                if ($contact->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $contact->id . '" data-status="' . $contact->status . '">Active</span>';
-                } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $contact->id . '" data-status="' . $contact->status . '">Deactive</span>';
-                }
+            if ($contact->status == 1) {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" checked id="statusButton" data-id="' . $contact->id . '" data-status="' . $contact->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            } else {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" id="statusButton" data-id="' . $contact->id . '" data-status="' . $contact->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            }
             })
             ->addColumn('action', function ($contact) {
                 return

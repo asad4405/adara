@@ -199,7 +199,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/banner/category/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/banner/category/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);
@@ -266,7 +266,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/banner/category/status/' + id,
+                    url: '{{ request()->root() }}/admin/banner/category/status/' + id,
                     data: {
                         id: id,
                         status: status,

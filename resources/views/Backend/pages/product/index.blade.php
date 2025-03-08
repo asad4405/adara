@@ -578,7 +578,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/product/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/product/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);

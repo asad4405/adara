@@ -29,11 +29,17 @@ class CreatePageController extends Controller
                 return $crate_page->title;
             })
             ->addColumn('status', function ($crate_page) {
-                if ($crate_page->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $crate_page->id . '" data-status="' . $crate_page->status . '">Active</span>';
-                } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $crate_page->id . '" data-status="' . $crate_page->status . '">Deactive</span>';
-                }
+            if ($crate_page->status == 1) {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" checked id="statusButton" data-id="' . $crate_page->id . '" data-status="' . $crate_page->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            } else {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" id="statusButton" data-id="' . $crate_page->id . '" data-status="' . $crate_page->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            }
             })
             ->addColumn('action', function ($crate_page) {
                 return

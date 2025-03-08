@@ -36,9 +36,15 @@ class ChildcategoryController extends Controller
             })
             ->addColumn('status', function ($childcategory) {
                 if ($childcategory->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $childcategory->id . '" data-status="' . $childcategory->status . '">Active</span>';
+                    return '<label class="custom-toggle">
+                                            <input type="checkbox" checked id="statusButton" data-id="' . $childcategory->id . '" data-status="' . $childcategory->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
                 } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $childcategory->id . '" data-status="' . $childcategory->status . '">Deactive</span>';
+                    return '<label class="custom-toggle">
+                                            <input type="checkbox" id="statusButton" data-id="' . $childcategory->id . '" data-status="' . $childcategory->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
                 }
             })
             ->addColumn('action', function ($childcategory) {

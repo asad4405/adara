@@ -25,11 +25,17 @@ class SizeController extends Controller
                 return $size->size_name;
             })
             ->addColumn('status', function ($size) {
-                if ($size->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $size->id . '" data-status="' . $size->status . '">Active</span>';
-                } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $size->id . '" data-status="' . $size->status . '">Deactive</span>';
-                }
+            if ($size->status == 1) {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" checked id="statusButton" data-id="' . $size->id . '" data-status="' . $size->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            } else {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" id="statusButton" data-id="' . $size->id . '" data-status="' . $size->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            }
             })
             ->addColumn('action', function ($size) {
                 return

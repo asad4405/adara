@@ -197,7 +197,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/size/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/size/' + id + '/edit',
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);
                         $('#updateForm').find('#up_size_name').val(data.size_name);

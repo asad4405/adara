@@ -251,7 +251,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/banner/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/banner/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);

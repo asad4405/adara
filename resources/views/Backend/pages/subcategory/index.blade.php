@@ -264,7 +264,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/subcategory/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/subcategory/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_category_id').val(data.category_id);

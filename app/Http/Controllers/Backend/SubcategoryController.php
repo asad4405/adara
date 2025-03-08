@@ -36,9 +36,15 @@ class SubcategoryController extends Controller
             })
             ->addColumn('status', function ($subcategory) {
                 if ($subcategory->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $subcategory->id . '" data-status="' . $subcategory->status . '">Active</span>';
+                    return '<label class="custom-toggle">
+                                        <input type="checkbox" checked id="statusButton" data-id="' . $subcategory->id . '" data-status="' . $subcategory->status . '">
+                                            <span class="toggle-slider"></span>
+                                    </label>';
                 } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $subcategory->id . '" data-status="' . $subcategory->status . '">Deactive</span>';
+                    return '<label class="custom-toggle">
+                                        <input type="checkbox" id="statusButton" data-id="' . $subcategory->id . '" data-status="' . $subcategory->status . '">
+                                            <span class="toggle-slider"></span>
+                                    </label>';
                 }
             })
             ->addColumn('action', function ($subcategory) {

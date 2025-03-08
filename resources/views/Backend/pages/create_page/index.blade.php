@@ -237,7 +237,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/create-page/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/create-page/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);
@@ -315,7 +315,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'DELETE',
-                            url: '/adara/admin/create-page/' + id,
+                            url: '{{ request()->root() }}/admin/create-page/' + id,
                             data: {
                                 '_token': token
                             },
@@ -342,7 +342,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/create-page/status/' + id,
+                    url: '{{ request()->root() }}/admin/create-page/status/' + id,
                     data: {
                         id: id,
                         status: status,

@@ -76,6 +76,14 @@
                                     <textarea name="meta_description" id="" class="form-control" rows="6"></textarea>
                                 </div>
 
+                                {{-- <div class="mb-3 col-12">
+                                    <label for="status" class="form-label d-block">Status</label>
+                                    <label class="custom-toggle">
+                                        <input type="checkbox" value="1" name="status" id="status">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div> --}}
+
                                 <div class="mb-3 col-12">
                                     <label for="status" class="form-label">Status</label>
                                     <select name="status" id="status" class="form-select">
@@ -154,8 +162,8 @@
                                 </div>
 
                                 <div class="mb-3 col-12">
-                                    <label for="status" class="form-label">Status</label>
-                                    <select name="status" id="status" class="form-select">
+                                    <label for="up_status" class="form-label">Status</label>
+                                    <select name="status" id="up_status" class="form-select">
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
@@ -163,6 +171,14 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+
+                                {{-- <div class="mb-3 col-12">
+                                    <label for="up_status" class="form-label d-block">Status</label>
+                                    <label class="custom-toggle">
+                                        <input type="checkbox" value="1" name="status" id="up_status">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div> --}}
 
                                 <div class="mb-3 col-12">
                                     <label for="front_view" class="form-label">Front View</label>
@@ -279,8 +295,11 @@
                         $('#updateForm').find('#category_name').val(data.category_name);
                         $('#updateForm').find('#meta_title').val(data.meta_title);
                         $('#updateForm').find('#meta_description').html(data.meta_description);
-                        $('#updateForm').find('#status').val(data.status);
+                        $('#updateForm').find('#up_status').val(data.status);
                         $('#updateForm').find('#front_view').val(data.front_view);
+                        if(data.status == 1){
+                            $('#up_status').attr('checked',true)
+                        }
                         $('#showImage').find('img').remove();
                         $('#showImage').append(`
                         <img src={{ asset('`+ data.image +`') }} alt="" style="width: 75px;">
@@ -304,7 +323,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: '/adara/admin/category/update/' + id,
+                    url: '{{ request()->root() }}/admin/category/update/' + id,
                     data: formData,
                     processData: false,
                     contentType: false,
@@ -354,7 +373,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'GET',
-                            url: '/adara/admin/category/delete/' + id,
+                            url: '{{ request()->root() }}/admin/category/delete/' + id,
                             success: function(data) {
                                 Swal.fire("Category has been deleted!", {
                                     icon: "success",
@@ -378,7 +397,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/category/status/' + id,
+                    url: '{{ request()->root() }}/admin/category/status/' + id,
                     data: {
                         id: id,
                         status: status,
@@ -405,7 +424,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/category/front/view/' + id,
+                    url: '{{ request()->root() }}/admin/category/front/view/' + id,
                     data: {
                         id: id,
                         front_view: front_view,

@@ -26,15 +26,21 @@ class GoogleTagManagerController extends Controller
             })
             ->addColumn('status', function ($gtm) {
                 if ($gtm->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $gtm->id . '"status-id="' . $gtm->status . '">Active</span>';
+                    return '<label class="custom-toggle">
+                                                <input type="checkbox" checked id="statusButton" data-id="' . $gtm->id . '" data-status="' . $gtm->status . '">
+                                                    <span class="toggle-slider"></span>
+                                            </label>';
                 } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $gtm->id . '" data-status="' . $gtm->status . '">Deactive</span>';
+                    return '<label class="custom-toggle">
+                                                <input type="checkbox" id="statusButton" data-id="' . $gtm->id . '" data-status="' . $gtm->status . '">
+                                                    <span class="toggle-slider"></span>
+                                            </label>';
                 }
             })
             ->addColumn('action', function ($gtm) {
-                return
-                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $gtm->id . '" data-bs-toggle="modal" data-bs-target="#Edit">Edit</a>
-                <a href="#" type="button" id="deleteButton" data-id="' . $gtm->id . '" class="btn btn-danger btn-sm" >Delete</a>';
+            return
+                '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $gtm->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="#" type="button" id="deleteButton" data-id="' . $gtm->id . '" class="btn btn-danger btn-sm" ><i class="fa-solid fa-trash"></i></a>';
             })
             ->rawColumns(['code', 'status', 'action'])
             ->make(true);

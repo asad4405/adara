@@ -216,7 +216,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/color/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/color/' + id + '/edit',
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);
                         $('#updateForm').find('#up_color_name').val(data.color_name);

@@ -290,7 +290,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/coupon/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/coupon/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);
@@ -373,7 +373,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'DELETE',
-                            url: '/adara/admin/coupon/' + id,
+                            url: '{{ request()->root() }}/admin/coupon/' + id,
                             data: {
                                 '_token': token
                             },
@@ -400,7 +400,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/coupon/status/' + id,
+                    url: '{{ request()->root() }}/admin/coupon/status/' + id,
                     data: {
                         id: id,
                         status: status,

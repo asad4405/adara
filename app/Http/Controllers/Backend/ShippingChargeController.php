@@ -28,11 +28,17 @@ class ShippingChargeController extends Controller
                 return $shipping_charge->amount;
             })
             ->addColumn('status', function ($shipping_charge) {
-                if ($shipping_charge->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $shipping_charge->id . '"status-id="' . $shipping_charge->status . '">Active</span>';
-                } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $shipping_charge->id . '" data-status="' . $shipping_charge->status . '">Inactive</span>';
-                }
+            if ($shipping_charge->status == 1) {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" checked id="statusButton" data-id="' . $shipping_charge->id . '" data-status="' . $shipping_charge->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            } else {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" id="statusButton" data-id="' . $shipping_charge->id . '" data-status="' . $shipping_charge->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            }
             })
             ->addColumn('action', function ($shipping_charge) {
                 return

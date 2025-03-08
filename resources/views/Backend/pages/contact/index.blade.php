@@ -193,7 +193,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/contact-us/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/contact-us/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);

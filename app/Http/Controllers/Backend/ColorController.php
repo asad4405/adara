@@ -29,9 +29,15 @@ class ColorController extends Controller
             })
             ->addColumn('status', function ($color) {
                 if ($color->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $color->id . '" data-status="' . $color->status . '">Active</span>';
+                    return '<label class="custom-toggle">
+                                            <input type="checkbox" checked id="statusButton" data-id="' . $color->id . '" data-status="' . $color->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
                 } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $color->id . '" data-status="' . $color->status . '">Deactive</span>';
+                    return '<label class="custom-toggle">
+                                            <input type="checkbox" id="statusButton" data-id="' . $color->id . '" data-status="' . $color->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
                 }
             })
             ->addColumn('action', function ($color) {

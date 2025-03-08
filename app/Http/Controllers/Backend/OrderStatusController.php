@@ -25,11 +25,17 @@ class OrderStatusController extends Controller
                 return $order_status->name;
             })
             ->addColumn('status', function ($crate_page) {
-                if ($crate_page->status == 1) {
-                    return '<span class="text-white btn bg-success">Active</span>';
-                } else {
-                    return '<span class="text-white btn bg-danger">Deactive</span>';
-                }
+            if ($crate_page->status == 1) {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" checked id="statusButton" data-id="' . $crate_page->id . '" data-status="' . $crate_page->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            } else {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" id="statusButton" data-id="' . $crate_page->id . '" data-status="' . $crate_page->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            }
             })
             ->rawColumns(['name','status'])
             ->make(true);

@@ -23,7 +23,7 @@ class CategoryController extends Controller
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
         $category->front_view = $request->front_view;
-        $category->status = $request->status;
+        $category->status = $request->status ? 1 : 0;
 
         if ($request->file('image')) {
             $image = $request->file('image');
@@ -52,16 +52,28 @@ class CategoryController extends Controller
             })
             ->addColumn('status', function ($category) {
                 if ($category->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $category->id . '" data-status="' . $category->status . '">Active</span>';
+                    return '<label class="custom-toggle">
+                                    <input type="checkbox" checked id="statusButton" data-id="' . $category->id . '" data-status="' . $category->status . '">
+                                        <span class="toggle-slider"></span>
+                                </label>';
                 } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $category->id . '" data-status="' . $category->status . '">Deactive</span>';
+                    return '<label class="custom-toggle">
+                                    <input type="checkbox" id="statusButton" data-id="' . $category->id . '" data-status="' . $category->status . '">
+                                        <span class="toggle-slider"></span>
+                                </label>';
                 }
             })
             ->addColumn('front_view', function ($category) {
                 if ($category->front_view == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="frontViewButton" data-id="' . $category->id . '" data-status="' . $category->front_view . '">Show</span>';
+                    return '<label class="custom-toggle">
+                                        <input type="checkbox" checked id="frontViewButton" data-id="' . $category->id . '" data-status="' . $category->front_view . '">
+                                            <span class="toggle-slider"></span>
+                                    </label>';
                 } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="frontViewButton" data-id="' . $category->id . '" data-status="' . $category->front_view . '">Hide</span>';
+                    return '<label class="custom-toggle">
+                                        <input type="checkbox" id="frontViewButton" data-id="' . $category->id . '" data-status="' . $category->front_view . '">
+                                            <span class="toggle-slider"></span>
+                                    </label>';
                 }
             })
             ->addColumn('action', function ($category) {
@@ -88,7 +100,7 @@ class CategoryController extends Controller
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
         $category->front_view = $request->front_view;
-        $category->status = $request->status;
+        $category->status = $request->status ;
 
         if ($request->file('image')) {
             $image = $request->file('image');

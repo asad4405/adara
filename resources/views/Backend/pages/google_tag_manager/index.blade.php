@@ -199,7 +199,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/google/tag-manager/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/google/tag-manager/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);
@@ -275,7 +275,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'DELETE',
-                            url: '/adara/admin/google/tag-manager/' + id,
+                            url: '{{ request()->root() }}/admin/google/tag-manager/' + id,
                             data: {
                                 '_token': token
                             },
@@ -302,7 +302,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/google/tag-manager/status/' + id,
+                    url: '{{ request()->root() }}/admin/google/tag-manager/status/' + id,
                     data: {
                         id: id,
                         status: status,

@@ -267,7 +267,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/social-media/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/social-media/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);
@@ -346,7 +346,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'DELETE',
-                            url: '/adara/admin/social-media/' + id,
+                            url: '{{ request()->root() }}/admin/social-media/' + id,
                             data: {
                                 '_token': token
                             },
@@ -373,7 +373,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/social-media/status/' + id,
+                    url: '{{ request()->root() }}/admin/social-media/status/' + id,
                     data: {
                         id: id,
                         status: status,

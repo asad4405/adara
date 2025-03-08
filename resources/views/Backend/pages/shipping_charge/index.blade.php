@@ -221,7 +221,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/shipping-charge/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/shipping-charge/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_id').val(data.id);
@@ -298,7 +298,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'DELETE',
-                            url: '/adara/admin/shipping-charge/' + id,
+                            url: '{{ request()->root() }}/admin/shipping-charge/' + id,
                             data: {
                                 '_token': token
                             },
@@ -325,7 +325,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/shipping-charge/status/' + id,
+                    url: '{{ request()->root() }}/admin/shipping-charge/status/' + id,
                     data: {
                         id: id,
                         status: status,

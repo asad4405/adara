@@ -35,11 +35,17 @@ class SocialMediaController extends Controller
                 return $social_media->color;
             })
             ->addColumn('status', function ($social_media) {
-                if ($social_media->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $social_media->id . '"status-id="' . $social_media->status . '">Active</span>';
-                } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $social_media->id . '" data-status="' . $social_media->status . '">Deactive</span>';
-                }
+            if ($social_media->status == 1) {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" checked id="statusButton" data-id="' . $social_media->id . '" data-status="' . $social_media->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            } else {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" id="statusButton" data-id="' . $social_media->id . '" data-status="' . $social_media->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            }
             })
             ->addColumn('action', function ($social_media) {
                 return

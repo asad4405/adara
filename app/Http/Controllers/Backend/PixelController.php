@@ -25,11 +25,17 @@ class PixelController extends Controller
                 return $pixel->pixel_code;
             })
             ->addColumn('status', function ($pixel) {
-                if ($pixel->status == 1) {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-success" id="statusButton" data-id="' . $pixel->id . '"status-id="' . $pixel->status . '">Active</span>';
-                } else {
-                    return '<span style="cursor: pointer;" class="text-white btn bg-danger" id="statusButton" data-id="' . $pixel->id . '" data-status="' . $pixel->status . '">Deactive</span>';
-                }
+            if ($pixel->status == 1) {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" checked id="statusButton" data-id="' . $pixel->id . '" data-status="' . $pixel->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            } else {
+                return '<label class="custom-toggle">
+                                            <input type="checkbox" id="statusButton" data-id="' . $pixel->id . '" data-status="' . $pixel->status . '">
+                                                <span class="toggle-slider"></span>
+                                        </label>';
+            }
             })
             ->addColumn('action', function ($pixel) {
                 return

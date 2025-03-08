@@ -199,7 +199,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/pixel/setting/' + id + '/edit',
+                    url: '{{ request()->root() }}/admin/pixel/setting/' + id + '/edit',
 
                     success: function(data) {
                         $('#updateForm').find('#up_pixel_code').val(data.pixel_code);
@@ -275,7 +275,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'DELETE',
-                            url: '/adara/admin/pixel/setting/' + id,
+                            url: '{{ request()->root() }}/admin/pixel/setting/' + id,
                             data: {
                                 '_token': token
                             },
@@ -302,7 +302,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: '/adara/admin/pixel/setting/status/' + id,
+                    url: '{{ request()->root() }}/admin/pixel/setting/status/' + id,
                     data: {
                         id: id,
                         status: status,
