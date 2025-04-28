@@ -1,30 +1,25 @@
-<!doctype html>
-<html class="no-js" lang="">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Adara - Shopping</title>
-    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="shortcut icon" type="{{ asset('public/Frontend/css') }}/image/x-icon" href="img/favicon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/animate.min.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/magnific-popup.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/fontawesome-all.min.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/swiper-bundle.min.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/jquery-ui.min.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/nice-select.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/jarallax.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/flaticon.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/slick.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/default.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/style.css">
-    <link rel="stylesheet" href="{{ asset('public/Frontend/css') }}/responsive.css">
+    <meta name="author" content="wpOceans">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('public/Frontend') }}/images/favicon.png">
+    <title>Themart - eCommerce HTML5 Template</title>
+    <link href="{{ asset('public/Frontend') }}/css/themify-icons.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/flaticon_ecommerce.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/animate.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/owl.carousel.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/owl.theme.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/slick.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/slick-theme.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/swiper.min.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/owl.transitions.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/css/odometer-theme-default.css" rel="stylesheet">
+    <link href="{{ asset('public/Frontend') }}/sass/style.css" rel="stylesheet">
 </head>

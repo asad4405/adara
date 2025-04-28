@@ -1,85 +1,106 @@
-<footer class="gray-bg footer-style-two pt-75">
-    <div class="container">
-        <div class="footer-top-wrap">
-            <div class="row">
-                <div class="col-12">
-                    <div class="footer-logo">
-                        <a href="index.html"><img src="img/logo/logo.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="pb-20 footer-middle-wrap pt-45">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-50">
-                        <h4 class="fw-title">COMPANY</h4>
-                        <div class="fw-link">
-                            <ul>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="shop.html">Store Locations</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-50">
-                        <h4 class="fw-title">STORE</h4>
-                        <div class="fw-link">
-                            <ul>
-                                <li><a href="#">Order Tracking</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-50">
-                        <h4 class="fw-title">Category</h4>
-                        <div class="fw-link">
-                            <ul>
-                                <li><a href="shop-sidebar.html">Women</a></li>
-                                <li><a href="shop-sidebar.html">Men</a></li>
-                                <li><a href="shop-sidebar.html">Baby</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget mb-50">
-                        <h4 class="fw-title">FOLLOW US</h4>
-                        <div class="footer-text">
-                            <p>Get Free Shipping on all your orders!</p>
-                            <div class="footer-social">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="copyright-wrap">
+<footer class="wpo-site-footer">
+    <div class="wpo-upper-footer">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="copyright-text">
-                        <p>&copy; 2021 <a href="index.html">adara</a>. All Rights Reserved | Ph (+09) 456 457869</p>
+            <div class="row">
+                <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="widget about-widget">
+                        <div class="logo widget-title">
+                            <img src="{{ asset('public/Frontend') }}/images/logo-2.svg" alt="blog">
+                        </div>
+                        <p>Elit commodo nec urna erat morbi at hac turpis aliquam.
+                            In tristique elit nibh turpis. Lacus volutpat ipsum convallis tellus pellentesque
+                            etiam.</p>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="ti-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="ti-twitter-alt"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="ti-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="ti-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="pay-method-img">
-                        <img src="img/images/payment_method_img.png" alt="">
+                <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
+                    <div class="widget link-widget">
+                        <div class="widget-title">
+                            <h3>Contact Us</h3>
+                        </div>
+                        <div class="contact-ft">
+                            <ul>
+                                <li><i class="fi flaticon-mail"></i>themart@gmail.com</li>
+                                <li><i class="fi flaticon-phone"></i>(208) 555-0112 <br>(704) 555-0127</li>
+                                <li><i class="fi flaticon-pin"></i>4517 Washington Ave. Manchter,
+                                    Kentucky 495</li>
+                            </ul>
+                        </div>
                     </div>
+                </div>
+                <div class="col col-xl-3 col-lg-2 col-md-6 col-sm-12 col-12">
+                    <div class="widget link-widget">
+                        <div class="widget-title">
+                            <h3>Popular</h3>
+                        </div>
+                        <ul>
+                            <li><a href="product.html">Men</a></li>
+                            <li><a href="product.html">Women</a></li>
+                            <li><a href="product.html">Kids</a></li>
+                            <li><a href="product.html">Shoe</a></li>
+                            <li><a href="product.html">Jewelry</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+                    <div class="widget instagram">
+                        <div class="widget-title">
+                            <h3>Instagram</h3>
+                        </div>
+                        <ul class="d-flex">
+                            <li><a href="project-single.html"><img
+                                        src="{{ asset('public/Frontend') }}/images/instragram/1.jpg" alt=""></a>
+                            </li>
+                            <li><a href="project-single.html"><img
+                                        src="{{ asset('public/Frontend') }}/images/instragram/2.jpg" alt=""></a>
+                            </li>
+                            <li><a href="project-single.html"><img
+                                        src="{{ asset('public/Frontend') }}/images/instragram/4.jpg" alt=""></a>
+                            </li>
+                            <li><a href="project-single.html"><img
+                                        src="{{ asset('public/Frontend') }}/images/instragram/3.jpg" alt=""></a>
+                            </li>
+                            <li><a href="project-single.html"><img
+                                        src="{{ asset('public/Frontend') }}/images/instragram/4.jpg" alt=""></a>
+                            </li>
+                            <li><a href="project-single.html"><img
+                                        src="{{ asset('public/Frontend') }}/images/instragram/1.jpg" alt=""></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end container -->
+    </div>
+    <div class="wpo-lower-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <p class="copyright"> Copyright &copy; 2023 Themart by <a href="index.html">wpOceans</a>.
+                        All
+                        Rights Reserved.</p>
                 </div>
             </div>
         </div>

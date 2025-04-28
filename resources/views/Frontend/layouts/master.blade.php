@@ -1,31 +1,20 @@
 @include('Frontend.includes.meta-tags')
 
 <body>
-    <!-- preloader  -->
-    {{-- @include('Frontend.includes.loader') --}}
-    <!-- preloader end -->
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start preloader -->
+        {{-- @include('Frontend.includes.loader') --}}
+        <!-- end preloader -->
 
-    <!-- Scroll-top -->
-    <button class="scroll-top scroll-to-target" data-target="html">
-        <i class="fas fa-angle-up"></i>
-    </button>
-    <!-- Scroll-top-end-->
+        <!-- start header -->
+        @include('Frontend.includes.header')
+        <!-- end of header -->
+        @yield('body-content')
 
-    <!-- header-area -->
-    @include('Frontend.includes.header')
-    <!-- header-area-end -->
-
-    <!-- main-area -->
-    @yield('body-content')
-    <!-- main-area-end -->
-
-
-    <!-- footer-area -->
-    @include('Frontend.includes.footer')
-    <!-- footer-area-end -->
-
-    <!-- JS here -->
+        @include('Frontend.includes.footer')
+    </div>
+    <!-- end of page-wrapper -->
     @include('Frontend.includes.script')
 </body>
-
 </html>
