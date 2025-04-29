@@ -1,4 +1,7 @@
 @extends('Backend.layouts.master')
+@section('title')
+    Dashboard
+@endsection
 @section('body-content')
     <div class="row">
         <div class="mb-4 col-lg-8 order-0">

@@ -1,4 +1,7 @@
 @extends('Backend.layouts.master')
+@section('title')
+    Category Section
+@endsection
 @section('body-content')
     <div class="card">
         <div class="card-title"
@@ -53,7 +56,7 @@
                                 <div class="mb-3 col-12">
                                     <label for="category_name" class="form-label">Category Name</label>
                                     <input type="text" id="category_name" class="form-control" name="category_name"
-                                        placeholder="Enter here.....">
+                                        placeholder="Enter here....." required>
                                     @error('category_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -62,17 +65,17 @@
                                 <div class="mb-3 col-12">
                                     <label for="image" class="form-label">Category Image</label>
                                     <input type="file" id="image" class="form-control" name="image"
-                                        placeholder="Enter here.....">
+                                        placeholder="Enter here....." required>
                                 </div>
 
                                 <div class="mb-3 col-12">
-                                    <label for="meta_title" class="form-label">Meta Title</label>
+                                    <label for="meta_title" class="form-label">Meta Title (optional)</label>
                                     <input type="text" id="meta_title" class="form-control" name="meta_title"
                                         placeholder="Enter here.....">
                                 </div>
 
                                 <div class="mb-3 col-12">
-                                    <label for="meta_description" class="form-label">Meta Description</label>
+                                    <label for="meta_description" class="form-label">Meta Description (optional)</label>
                                     <textarea name="meta_description" id="" class="form-control" rows="6"></textarea>
                                 </div>
 

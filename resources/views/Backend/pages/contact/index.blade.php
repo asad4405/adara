@@ -1,4 +1,7 @@
 @extends('Backend.layouts.master')
+@section('title')
+    Contact
+@endsection
 @section('body-content')
     <div class="card">
         <div class="card-title option_sidebar" style="display: flex;justify-content: space-between;align-items: center;color: #566a7f;padding: 1.5rem;opacity: 0.8;margin-bottom: -40px;">

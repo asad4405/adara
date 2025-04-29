@@ -17,13 +17,18 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $category = new Category();
-        $category->category_name = $request->category_name;
-        $category->slug = Str::slug($request->category_name);
-        $category->meta_title = $request->meta_title;
+        $request->validate([
+            'category_name' => 'required',
+            'image' => 'required',
+        ]);
+
+        $category                   = new Category();
+        $category->category_name    = $request->category_name;
+        $category->slug             = Str::slug($request->category_name);
+        $category->meta_title       = $request->meta_title;
         $category->meta_description = $request->meta_description;
-        $category->front_view = $request->front_view;
-        $category->status = $request->status ? 1 : 0;
+        $category->front_view       = $request->front_view;
+        $category->status           = $request->status ? 1 : 0;
 
         if ($request->file('image')) {
             $image = $request->file('image');

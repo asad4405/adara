@@ -1,4 +1,7 @@
 @extends('Frontend.layouts.master')
+@section('title')
+    Home
+@endsection
 @section('body-content')
     <!-- slider-area -->
     @include('Frontend.includes.banner')
@@ -21,7 +24,7 @@
                                 <img src="{{ asset($value->image) }}" alt="">
                             </div>
                             <div class="text">
-                                <h2>{{ $value->category_name }}</h2>
+                                <h2>{{ Str::limit($value->category_name,15) }}</h2>
                             </div>
                         </div>
                     </a>

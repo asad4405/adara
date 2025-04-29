@@ -1,4 +1,7 @@
 @extends('Backend.layouts.master')
+@section('title')
+    Payment Gateway
+@endsection
 @section('body-content')
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>

@@ -1,4 +1,7 @@
 @extends('Backend.layouts.master')
+@section('title')
+    Sms Gateway
+@endsection
 @section('body-content')
     <div class="card">
         <div class="card-title option_sidebar"
