@@ -5865,29 +5865,31 @@ img {
 }
 
 .themart-featured-section .featured-item .images {
-  max-width: 140px;
+  max-width: 100px;
   height: 100px;
   margin: 0 auto;
 }
 
 .themart-featured-section .featured-item .images img {
-  width: 100%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .themart-featured-section .featured-item .text h2 {
   margin-bottom: 0;
   -webkit-transition: all .3s ease-out 0s;
   transition: all .3s ease-out 0s;
+    font-family: "Muli";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    color: #000;
+    margin-top: 15px;
 }
 
-.themart-featured-section .featured-item .text h2 a {
-  font-family: "Muli";
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
-  text-align: center;
-  color: #000;
-}
 
 .themart-featured-section .featured-item .text h2:hover a {
   color: #ffa500;
@@ -6784,6 +6786,9 @@ img {
   transition: all .3s ease-in-out;
   overflow: hidden;
   padding-top: 15px;
+}
+.product-item .image img{
+    width: 180px;
 }
 
 .product-item .image .tag {

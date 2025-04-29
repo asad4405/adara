@@ -14,70 +14,18 @@
                 </div>
             </div>
             <div class="featured-categorie-slider owl-carousel">
-                <div class="featured-item">
-                    <div class="images">
-                        <img src="{{ asset('public/Frontend') }}/images/featured-categorie/1.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="product.html">Sneakers</a></h2>
-                    </div>
-                </div>
-                <div class="featured-item">
-                    <div class="images">
-                        <img src="{{ asset('public/Frontend') }}/images/featured-categorie/2.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="product.html">Cosmetics</a></h2>
-                    </div>
-                </div>
-                <div class="featured-item">
-                    <div class="images">
-                        <img src="{{ asset('public/Frontend') }}/images/featured-categorie/3.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="product.html">Bags</a></h2>
-                    </div>
-                </div>
-                <div class="featured-item">
-                    <div class="images">
-                        <img src="{{ asset('public/Frontend') }}/images/featured-categorie/4.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="product.html">Jackets</a></h2>
-                    </div>
-                </div>
-                <div class="featured-item">
-                    <div class="images">
-                        <img src="{{ asset('public/Frontend') }}/images/featured-categorie/5.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="product.html">Skin Care</a></h2>
-                    </div>
-                </div>
-                <div class="featured-item">
-                    <div class="images">
-                        <img src="{{ asset('public/Frontend') }}/images/featured-categorie/6.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="product.html">Jewelry</a></h2>
-                    </div>
-                </div>
-                <div class="featured-item">
-                    <div class="images">
-                        <img src="{{ asset('public/Frontend') }}/images/featured-categorie/7.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="product.html">Dress</a></h2>
-                    </div>
-                </div>
-                <div class="featured-item">
-                    <div class="images">
-                        <img src="{{ asset('public/Frontend') }}/images/featured-categorie/8.png" alt="">
-                    </div>
-                    <div class="text">
-                        <h2><a href="product.html">Kids</a></h2>
-                    </div>
-                </div>
+                @foreach ($categories as $value)
+                    <a href="">
+                        <div class="featured-item">
+                            <div class="images">
+                                <img src="{{ asset($value->image) }}" alt="">
+                            </div>
+                            <div class="text">
+                                <h2>{{ $value->category_name }}</h2>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </section>
@@ -135,214 +83,37 @@
             </div>
             <div class="product-wrap">
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="product-item">
-                            <div class="image">
-                                <img src="{{ asset('public/Frontend') }}/images/interest-product/1.png" alt="">
-                                <div class="tag new">New</div>
-                            </div>
-                            <div class="text">
-                                <h2><a href="product-single.html">Wireless Headphones</a></h2>
-                                <div class="rating-product">
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>130</span>
+                    @foreach ($products as $value)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                            <div class="product-item">
+                                <div class="image">
+                                    <img src="{{ asset($value->product_image) }}" alt="">
+                                    {{-- <div class="tag new">New</div> --}}
+                                    {{-- <div class="tag sale">Sale</div> --}}
                                 </div>
-                                <div class="price">
-                                    <span class="present-price">$120.00</span>
-                                    <del class="old-price">$200.00</del>
-                                </div>
-                                <div class="shop-btn">
-                                    <a class="theme-btn-s2" href="product.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="product-item">
-                            <div class="image">
-                                <img src="{{ asset('public/Frontend') }}/images/interest-product/2.png" alt="">
-                                <div class="tag sale">Sale</div>
-                            </div>
-                            <div class="text">
-                                <h2><a href="product-single.html">Blue Bag with Lock</a></h2>
-                                <div class="rating-product">
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>120</span>
-                                </div>
-                                <div class="price">
-                                    <span class="present-price">$160.00</span>
-                                    <del class="old-price">$190.00</del>
-                                </div>
-                                <div class="shop-btn">
-                                    <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                <div class="text">
+                                    <h2><a href="product-single.html">{{ $value->product_name }}</a></h2>
+                                    <div class="rating-product">
+                                        <i class="fi flaticon-star"></i>
+                                        <i class="fi flaticon-star"></i>
+                                        <i class="fi flaticon-star"></i>
+                                        <i class="fi flaticon-star"></i>
+                                        <i class="fi flaticon-star"></i>
+                                        <span>130</span>
+                                    </div>
+                                    <div class="price">
+                                        <span class="present-price">৳{{ $value->new_price }}</span>
+                                        @if ($value->new_price < $value->old_price)
+                                            <del class="old-price">৳{{ $value->old_price }}</del>
+                                        @endif
+                                    </div>
+                                    <div class="shop-btn">
+                                        <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="product-item">
-                            <div class="image">
-                                <img src="{{ asset('public/Frontend') }}/images/interest-product/3.png" alt="">
-                                <div class="tag new">New</div>
-                            </div>
-                            <div class="text">
-                                <h2><a href="product-single.html">Stylish Pink Top</a></h2>
-                                <div class="rating-product">
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>150</span>
-                                </div>
-                                <div class="price">
-                                    <span class="present-price">$150.00</span>
-                                    <del class="old-price">$200.00</del>
-                                </div>
-                                <div class="shop-btn">
-                                    <a class="theme-btn-s2" href="product.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="product-item">
-                            <div class="image">
-                                <img src="{{ asset('public/Frontend') }}/images/interest-product/4.png" alt="">
-                                <div class="tag sale">Sale</div>
-                            </div>
-                            <div class="text">
-                                <h2><a href="product-single.html">Brown Com Boots</a></h2>
-                                <div class="rating-product">
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>120</span>
-                                </div>
-                                <div class="price">
-                                    <span class="present-price">$120.00</span>
-                                    <del class="old-price">$150.00</del>
-                                </div>
-                                <div class="shop-btn">
-                                    <a class="theme-btn-s2" href="product.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="product-item">
-                            <div class="image">
-                                <img src="{{ asset('public/Frontend') }}/images/interest-product/5.png" alt="">
-                                <div class="tag new">New</div>
-                            </div>
-                            <div class="text">
-                                <h2><a href="product-single.html">Winter Sweter</a></h2>
-                                <div class="rating-product">
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>160</span>
-                                </div>
-                                <div class="price">
-                                    <span class="present-price">$110.00</span>
-                                    <del class="old-price">$130.00</del>
-                                </div>
-                                <div class="shop-btn">
-                                    <a class="theme-btn-s2" href="product.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="product-item">
-                            <div class="image">
-                                <img src="{{ asset('public/Frontend') }}/images/interest-product/6.png" alt="">
-                                <div class="tag sale">Sale</div>
-                            </div>
-                            <div class="text">
-                                <h2><a href="product-single.html">Blue Kids Shoes</a></h2>
-                                <div class="rating-product">
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>130</span>
-                                </div>
-                                <div class="price">
-                                    <span class="present-price">$180.00</span>
-                                    <del class="old-price">$200.00</del>
-                                </div>
-                                <div class="shop-btn">
-                                    <a class="theme-btn-s2" href="product.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="product-item">
-                            <div class="image">
-                                <img src="{{ asset('public/Frontend') }}/images/interest-product/7.png" alt="">
-                                <div class="tag new">New</div>
-                            </div>
-                            <div class="text">
-                                <h2><a href="product-single.html">Stylish Bag</a></h2>
-                                <div class="rating-product">
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>120</span>
-                                </div>
-                                <div class="price">
-                                    <span class="present-price">$170.00</span>
-                                    <del class="old-price">$200.00</del>
-                                </div>
-                                <div class="shop-btn">
-                                    <a class="theme-btn-s2" href="product.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="product-item">
-                            <div class="image">
-                                <img src="{{ asset('public/Frontend') }}/images/interest-product/8.png" alt="">
-                                <div class="tag sale">Sale</div>
-                            </div>
-                            <div class="text">
-                                <h2><a href="product-single.html">Finger Rings</a></h2>
-                                <div class="rating-product">
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <i class="fi flaticon-star"></i>
-                                    <span>120</span>
-                                </div>
-                                <div class="price">
-                                    <span class="present-price">$100.00</span>
-                                    <del class="old-price">$130.00</del>
-                                </div>
-                                <div class="shop-btn">
-                                    <a class="theme-btn-s2" href="product.html">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <div class="more-btn">
                         <a class="theme-btn-s2" href="product.html">View All</a>
                     </div>
@@ -438,8 +209,7 @@
                         <li>
                             <div class="product-item">
                                 <div class="image">
-                                    <img src="{{ asset('public/Frontend') }}/images/special-product-1.jpg"
-                                        alt="">
+                                    <img src="{{ asset('public/Frontend') }}/images/special-product-1.jpg" alt="">
                                 </div>
                                 <div class="text">
                                     <h2><a href="product-single.html">Jewelry Sets</a></h2>
@@ -468,8 +238,7 @@
                         <li>
                             <div class="product-item">
                                 <div class="image">
-                                    <img src="{{ asset('public/Frontend') }}/images/special-product-2.jpg"
-                                        alt="">
+                                    <img src="{{ asset('public/Frontend') }}/images/special-product-2.jpg" alt="">
                                 </div>
                                 <div class="text">
                                     <h2><a href="product-single.html">White Shoe</a></h2>
@@ -500,6 +269,49 @@
 
     <!-- start of themart-trendingproduct-section -->
     <section class="themart-trendingproduct-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="wpo-section-title">
+                        <h2>Trending Products</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="trendin-slider owl-carousel">
+                @foreach ($trending_products as $value)
+                    <div class="product-item">
+                        <div class="image">
+                            <img src="{{ asset($value->product_image) }}" alt="">
+                            {{-- <div class="tag new">New</div> --}}
+                        </div>
+                        <div class="text">
+                            <h2><a href="product-single.html">{{ $value->product_name }}</a></h2>
+                            <div class="rating-product">
+                                <i class="fi flaticon-star"></i>
+                                <i class="fi flaticon-star"></i>
+                                <i class="fi flaticon-star"></i>
+                                <i class="fi flaticon-star"></i>
+                                <i class="fi flaticon-star"></i>
+                                <span>130</span>
+                            </div>
+                            <div class="price">
+                                <span class="present-price">৳{{ $value->new_price }}</span>
+                                @if ($value->new_price < $value->old_price)
+                                    <del class="old-price">৳{{ $value->old_price }}</del>
+                                @endif
+                            </div>
+                            <div class="shop-btn">
+                                <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <!-- end of themart-trendingproduct-section -->
+    <!-- start of themart-trendingproduct-section -->
+    <section class="themart-trendingproduct-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">

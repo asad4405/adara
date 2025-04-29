@@ -22,4 +22,6 @@
     <link href="{{ asset('public/Frontend') }}/css/jquery.fancybox.css" rel="stylesheet">
     <link href="{{ asset('public/Frontend') }}/css/odometer-theme-default.css" rel="stylesheet">
     <link href="{{ asset('public/Frontend') }}/sass/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+
 </head>
