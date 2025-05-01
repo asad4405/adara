@@ -66,6 +66,7 @@ class ProductController extends Controller
         $product->color_id = $request->color_id;
         $product->size_id = $request->size_id;
         $product->product_unit = $request->product_unit;
+        $product->product_type = $request->product_type;
         $product->product_video = $request->product_video;
         $product->short_description = $request->short_description;
         $product->description = $request->description;
@@ -129,9 +130,16 @@ class ProductController extends Controller
                 }
             })
             ->addColumn('action', function ($product) {
-                return
-                    '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $product->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                if ($product->product_type == 1) {
+                    return
+                        '<a href="' . route('admin.inventory.index', $product->id) . '" class="text-white btn btn-sm btn-info"> Variant Product Stock</a>
+                    <a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $product->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="#" type="button" id="deleteButton" data-id="' . $product->id . '" class="btn btn-danger btn-sm" ><i class="fa-solid fa-trash"></i></a>';
+                } else {
+                    return
+                        '<a class="text-white btn btn-sm btn-primary" id="editButton" data-id="' . $product->id . '" data-bs-toggle="modal" data-bs-target="#Edit"><i class="fa-solid fa-pen-to-square"></i></a>
                 <a href="#" type="button" id="deleteButton" data-id="' . $product->id . '" class="btn btn-danger btn-sm" ><i class="fa-solid fa-trash"></i></a>';
+                }
             })
             ->rawColumns(['product_name', 'product_image', 'status', 'action'])
             ->make(true);
@@ -175,6 +183,7 @@ class ProductController extends Controller
         $product->color_id = $request->color_id;
         $product->size_id = $request->size_id;
         $product->product_unit = $request->product_unit;
+        $product->product_type = $request->product_type;
         $product->product_video = $request->product_video;
         $product->short_description = $request->short_description;
         $product->description = $request->description;
@@ -225,7 +234,7 @@ class ProductController extends Controller
     public function productPriceEdit()
     {
         $products = Product::all();
-        return view('Backend.pages.product.productprice-edit',compact('products'));
+        return view('Backend.pages.product.productprice-edit', compact('products'));
     }
 
     public function productPriceUpdate(Request $request)
@@ -234,7 +243,7 @@ class ProductController extends Controller
         $old_price = $request->old_price;
         $new_price = $request->new_price;
         $stock = $request->stock;
-        foreach($ids as $key=> $id){
+        foreach ($ids as $key => $id) {
             $product = Product::findOrFail($id);
 
             if ($product) {

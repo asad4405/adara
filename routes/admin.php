@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\CreatePageController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\GoogleTagManagerController;
+use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\MailGatewayController;
 use App\Http\Controllers\Backend\OrderStatusController;
 use App\Http\Controllers\Backend\PaymentGatewayController;
@@ -35,6 +36,13 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::get('product/status/{id}', [ProductController::class, 'statusUpdate']);
     Route::get('products/price-edit', [ProductController::class, 'productPriceEdit'])->name('admin.product.price-edit');
     Route::post('products/price-update', [ProductController::class, 'productPriceUpdate'])->name('admin.product.price-update');
+
+    // inventory
+    Route::get('/inventory/{id}', [InventoryController::class, 'index'])->name('admin.inventory.index');
+    Route::post('/inventory/store', [InventoryController::class, 'store'])->name('admin.inventory.store');
+    Route::get('/inventory/edit/{id}', [InventoryController::class, 'edit'])->name('admin.inventory.edit');
+    Route::post('/inventory/update/{id}', [InventoryController::class, 'update'])->name('admin.inventory.update');
+    Route::get('/inventory/destroy/{id}', [InventoryController::class, 'destroy'])->name('admin.inventory.destroy');
 
     // categories
     Route::get('/category/manage', [CategoryController::class, 'manage'])->name('category.manage');

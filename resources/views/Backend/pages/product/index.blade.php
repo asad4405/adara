@@ -163,29 +163,11 @@
                                 </div>
 
                                 <div class="mb-3 col-6">
-                                    <label for="color_id" class="form-label">Color (optional)</label>
-                                    <select name="color_id" id="color_id" class="form-select">
-                                        <option value="">Select Color</option>
-                                        @foreach ($colors as $color)
-                                            <option value="{{ $color->id }}">{{ $color->color_name }}</option>
-                                        @endforeach
+                                    <label for="product_type" class="form-label">Product Type *</label>
+                                    <select name="product_type" class="form-select" id="product_type">
+                                        <option value="0">Single</option>
+                                        <option value="1">Varient</option>
                                     </select>
-                                </div>
-
-                                <div class="mb-3 col-6">
-                                    <label for="size_id" class="form-label">Size (optional)</label>
-                                    <select name="size_id" id="size_id" class="form-select">
-                                        <option value="">Select Size</option>
-                                        @foreach ($sizes as $size)
-                                            <option value="{{ $size->id }}">{{ $size->size_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="mb-3 col-6">
-                                    <label for="product_unit" class="form-label">Product Unit (optional)</label>
-                                    <input type="text" id="product_unit" class="form-control" name="product_unit"
-                                        placeholder="Enter here.....">
                                 </div>
 
                                 <div class="mb-3 col-6">
@@ -329,6 +311,14 @@
                                 </div>
 
                                 <div class="mb-3 col-6">
+                                    <label for="product_type" class="form-label">Product Type *</label>
+                                    <select name="product_type" class="form-select" id="up_product_type">
+                                        <option value="0">Single</option>
+                                        <option value="1">Varient</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3 col-6">
                                     <label for="up_product_code" class="form-label">Product Code *</label>
                                     <input type="text" id="up_product_code" class="form-control" name="product_code"
                                         placeholder="Enter here.....">
@@ -391,7 +381,7 @@
                                     @enderror
                                 </div> --}}
 
-                                <div class="mb-3 col-6">
+                                {{-- <div class="mb-3 col-6">
                                     <label for="up_color_id" class="form-label">Color (optional)</label>
                                     <select name="color_id" id="up_color_id" class="form-select">
                                         <option value="">Select Color</option>
@@ -409,13 +399,14 @@
                                             <option value="{{ $size->id }}">{{ $size->size_name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
 
-                                <div class="mb-3 col-6">
+                                {{-- <div class="mb-3 col-6">
                                     <label for="up_product_unit" class="form-label">Product Unit (optional)</label>
                                     <input type="text" id="up_product_unit" class="form-control" name="product_unit"
                                         placeholder="Enter here.....">
-                                </div>
+                                </div> --}}
+
 
                                 <div class="mb-3 col-6">
                                     <label for="up_product_video" class="form-label">Product Video (optional)</label>
@@ -598,7 +589,8 @@
                         $('#updateForm').find('#up_stock').val(data.stock);
                         $('#updateForm').find('#up_color_id').val(data.color_id);
                         $('#updateForm').find('#up_size_id').val(data.size_id);
-                        $('#updateForm').find('#up_product_unit').val(data.product_unit);
+                        // $('#updateForm').find('#up_product_unit').val(data.product_unit);
+                        $('#updateForm').find('#up_product_type').val(data.product_type);
                         $('#updateForm').find('#up_product_video').val(data.product_video);
                         $('#updateForm').find('#up_short_description').val(data.short_description);
                         $('#updateForm').find('#up_description').val(data.description);
