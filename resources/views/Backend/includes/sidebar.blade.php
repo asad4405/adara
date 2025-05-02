@@ -188,6 +188,11 @@
                     </a>
                 </li>
                 <li class="menu-item">
+                    <a href="{{ route('admin.contact-us-list') }}" class="menu-link">
+                        <div data-i18n="Connections">Contact Us List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
                     <a href="{{ route('admin.create-page.index') }}" class="menu-link">
                         <div data-i18n="Connections">Create Page</div>
                     </a>

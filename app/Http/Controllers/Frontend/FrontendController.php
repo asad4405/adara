@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Contact;
+use App\Models\ContactUs;
 use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\SliderImage;
@@ -47,5 +49,24 @@ class FrontendController extends Controller
             ->get();
 
         return view('Frontend.pages.shop', compact('products', 'new_products', 'categories', 'product_colors', 'product_sizes'));
+    }
+
+    public function contact()
+    {
+        $contact = Contact::first();
+        return view('Frontend.pages.contact',compact('contact'));
+    }
+
+    public function contact_submit(Request $request)
+    {
+        $contact_us = new ContactUs();
+        $contact_us->name    = $request->name;
+        $contact_us->email   = $request->email;
+        $contact_us->phone   = $request->phone;
+        $contact_us->adress  = $request->adress;
+        $contact_us->message = $request->message;
+
+        $contact_us->save();
+        return back()->with('success','Message send Success!');
     }
 }

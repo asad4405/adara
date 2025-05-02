@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildcategoryController;
 use App\Http\Controllers\Backend\ColorController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CourierApiController;
 use App\Http\Controllers\Backend\CreatePageController;
@@ -148,4 +149,9 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::resource('review', ReviewController::class, ['names' => 'admin.review']);
     Route::get('review/get/data', [ReviewController::class, 'getData'])->name('admin.review.get-data');
     Route::get('review/status/{id}', [ReviewController::class, 'statusUpdate']);
+
+    // ================================== others ======================================== //
+    Route::get('contact-us/list/index', [ContactUsController::class, 'contact_usList'])->name('admin.contact-us-list');
+    Route::get('contact-us/list/index/get/data', [ContactUsController::class, 'getData'])->name('admin.contact-uus-list.get-data');
+    Route::get('contact-us/list/index/show/data/{id}', [ContactUsController::class, 'showtData'])->name('admin.contact-us-list.show-data');
 });
