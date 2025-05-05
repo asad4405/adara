@@ -11,6 +11,7 @@ use App\Models\Inventory;
 use App\Models\Product;
 use App\Models\SliderImage;
 use App\Models\SocialMedia;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -30,6 +31,15 @@ class FrontendController extends Controller
         $product = Product::where('slug',$slug)->first();
         $product_sliders = SliderImage::where('product_id',$product->id)->get();
         return view('Frontend.pages.product_details',compact('product', 'product_sliders'));
+    }
+
+    public function category_product($slug)
+    {
+        $category_id = Category::where('slug',$slug)->first()->id;
+        $products = Product::where('status',1)->where('category_id',$category_id)->get();
+        $new_products = Product::where('status', 1)->latest()->take(3)->get();
+        $subcategories = Subcategory::where('status', 1)->where('category_id',$category_id)->latest()->get();
+        return view('Frontend.pages.category', compact('products', 'new_products', 'subcategories'));
     }
 
     public function shop()

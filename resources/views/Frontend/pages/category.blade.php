@@ -12,7 +12,7 @@
                     <div class="wpo-breadcumb-wrap">
                         <ol class="wpo-breadcumb-wrap">
                             <li><a href="{{ route('index') }}">Home</a></li>
-                            <li>Shop</li>
+                            <li>Category Products</li>
                         </ol>
                     </div>
                 </div>
@@ -43,9 +43,9 @@
                             <div class="shop-filter-item category-widget">
                                 <h2>Categories</h2>
                                 <ul>
-                                    @forelse ($categories as $value)
+                                    @forelse ($subcategories as $value)
                                         <li><a
-                                                href="{{ route('category.product',$value->slug) }}">{{ $value->category_name }}<span>({{ $value->count() }})</span></a>
+                                                href="#">{{ $value->subcategory_name }}<span>({{ $value->count() }})</span></a>
                                         </li>
                                     @empty
                                     @endforelse
@@ -87,7 +87,7 @@
                             <div class="shop-filter-item">
                                 <h2>Color</h2>
                                 <ul>
-                                    @foreach ($product_colors as $value)
+                                    {{-- @foreach ($product_colors as $value)
                                         <li>
                                             <label class="topcoat-radio-button__label">
                                                 {{ $value->color->color_name }} <span>({{ $value->total }})</span>
@@ -95,7 +95,7 @@
                                                 <span class="topcoat-radio-button"></span>
                                             </label>
                                         </li>
-                                    @endforeach
+                                    @endforeach --}}
 
                                 </ul>
                             </div>
@@ -104,7 +104,7 @@
                             <div class="shop-filter-item">
                                 <h2>Size</h2>
                                 <ul>
-                                    @foreach ($product_sizes as $value)
+                                    {{-- @foreach ($product_sizes as $value)
                                         <li>
                                             <label class="topcoat-radio-button__label">
                                                 {{ $value->size->size_name }} <span>({{ $value->count() }})</span>
@@ -112,7 +112,7 @@
                                                 <span class="topcoat-radio-button"></span>
                                             </label>
                                         </li>
-                                    @endforeach
+                                    @endforeach --}}
                                 </ul>
                             </div>
                         </div>

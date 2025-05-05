@@ -18,7 +18,7 @@
             </div>
             <div class="featured-categorie-slider owl-carousel">
                 @foreach ($categories as $value)
-                    <a href="">
+                    <a href="{{ route('category.product',$value->slug) }}">
                         <div class="featured-item">
                             <div class="images">
                                 <img src="{{ asset($value->image) }}" alt="">
@@ -118,7 +118,7 @@
                         </div>
                     @endforeach
                     <div class="more-btn">
-                        <a class="theme-btn-s2" href="product.html">View All</a>
+                        <a class="theme-btn-s2" href="{{ route('shop') }}">View All</a>
                     </div>
                 </div>
             </div>
