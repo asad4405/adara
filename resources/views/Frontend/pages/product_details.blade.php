@@ -8,6 +8,9 @@
         <h2 class="d-none">Hide</h2>
         <div class="container">
             <div class="row">
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
                 <div class="col col-xs-12">
                     <div class="wpo-breadcumb-wrap">
                         <ol class="wpo-breadcumb-wrap">
@@ -26,113 +29,91 @@
     <div class="product-single-section section-padding">
         <div class="container">
             <div class="product-details">
-                <div class="row align-items-center">
-                    <div class="col-lg-5">
-                        <div class="product-single-img">
-                            <div class="product-active owl-carousel">
-                                @foreach ($product_sliders as $value)
-                                    <div class="item">
-                                        <img src="{{ asset($value->slider_image) }}" alt="">
-                                    </div>
-                                @endforeach
+                <form action="{{ route('add-to-cart') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5">
+                            <div class="product-single-img">
+                                <div class="product-active owl-carousel">
+                                    @foreach ($product_sliders as $value)
+                                        <div class="item">
+                                            <img src="{{ asset($value->slider_image) }}" alt="">
+                                        </div>
+                                    @endforeach
 
+                                </div>
+                                <div class="product-thumbnil-active owl-carousel">
+                                    @foreach ($product_sliders as $value)
+                                        <div class="item">
+                                            <img src="{{ asset($value->slider_image) }}" alt="">
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
-                            <div class="product-thumbnil-active owl-carousel">
-                                @foreach ($product_sliders as $value)
-                                    <div class="item">
-                                        <img src="{{ asset($value->slider_image) }}" alt="">
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="product-single-content">
+                                <h2>{{ $product->product_name }}</h2>
+                                <div class="price">
+                                    <span class="present-price">৳{{ $product->new_price }}</span>
+                                    @if ($product->old_price > $product->new_price)
+                                        <del class="old-price">৳{{ $product->old_price }}</del>
+                                    @endif
+                                </div>
+                                <div class="rating-product">
+                                    <i class="fi flaticon-star"></i>
+                                    <i class="fi flaticon-star"></i>
+                                    <i class="fi flaticon-star"></i>
+                                    <i class="fi flaticon-star"></i>
+                                    <i class="fi flaticon-star"></i>
+                                    <span>120</span>
+                                </div>
+                                <p>{{ $product->short_description }}</p>
+                                <div class="product-filter-item color">
+                                    <div class="color-name">
+                                        <span>Color :</span>
+                                        <ul>
+                                            @foreach ($product_colors as $value)
+                                                <li class="color1"><input id="color{{ $value->color_id }}" type="radio"
+                                                        name="color_id" value="{{ $value->color_id }}">
+                                                    <label for="color{{ $value->color_id }}"
+                                                        style="background: {{ $value->color->color_code }}"></label>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
-                                @endforeach
+                                </div>
+                                <div class="product-filter-item color filter-size">
+                                    <div class="color-name">
+                                        <span>Sizes:</span>
+                                        <ul>
+                                            @foreach ($product_sizes as $value)
+                                                <li class="color"><input id="size{{ $value->size_id }}" type="radio"
+                                                        name="size_id" value="{{ $value->size_id }}">
+                                                    <label
+                                                        for="size{{ $value->size_id }}">{{ $value->size->size_name }}</label>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pro-single-btn">
+                                    <div class="quantity cart-plus-minus">
+                                        <input class="text-value" type="text" value="1" name="quantity">
+                                    </div>
+                                    <button href="#" class="border-0 theme-btn-s2">Add to cart</button>
+                                    <a href="#" class="wl-btn"><i class="fi flaticon-heart"></i></a>
+                                </div>
+                                <ul class="important-text">
+                                    <li><span>SKU:</span>{{ $product->product_code }}</li>
+                                    <li><span>Categories:</span>{{ $product->category->category_name }}</li>
+                                    <li><span>Tags:</span>Fashion, Coat, Pink</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-7">
-                        <div class="product-single-content">
-                            <h2>{{ $product->product_name }}</h2>
-                            <div class="price">
-                                <span class="present-price">৳{{ $product->new_price }}</span>
-                                @if ($product->old_price > $product->new_price)
-                                    <del class="old-price">৳{{ $product->old_price }}</del>
-                                @endif
-                            </div>
-                            <div class="rating-product">
-                                <i class="fi flaticon-star"></i>
-                                <i class="fi flaticon-star"></i>
-                                <i class="fi flaticon-star"></i>
-                                <i class="fi flaticon-star"></i>
-                                <i class="fi flaticon-star"></i>
-                                <span>120</span>
-                            </div>
-                            <p>{{ $product->short_description }}</p>
-                            <div class="product-filter-item color">
-                                <div class="color-name">
-                                    <span>Color :</span>
-                                    <ul>
-                                        <li class="color1"><input id="a1" type="radio" name="color"
-                                                value="30">
-                                            <label for="a1"></label>
-                                        </li>
-                                        <li class="color2"><input id="a2" type="radio" name="color"
-                                                value="30">
-                                            <label for="a2"></label>
-                                        </li>
-                                        <li class="color3"><input id="a3" type="radio" name="color"
-                                                value="30">
-                                            <label for="a3"></label>
-                                        </li>
-                                        <li class="color4"><input id="a4" type="radio" name="color"
-                                                value="30">
-                                            <label for="a4"></label>
-                                        </li>
-                                        <li class="color5"><input id="a5" type="radio" name="color"
-                                                value="30">
-                                            <label for="a5"></label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-filter-item color filter-size">
-                                <div class="color-name">
-                                    <span>Sizes:</span>
-                                    <ul>
-                                        <li class="color"><input id="sz1" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz1">S</label>
-                                        </li>
-                                        <li class="color"><input id="sz2" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz2">M</label>
-                                        </li>
-                                        <li class="color"><input id="sz3" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz3">L</label>
-                                        </li>
-                                        <li class="color"><input id="sz4" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz4">X</label>
-                                        </li>
-                                        <li class="color"><input id="sz5" type="radio" name="size"
-                                                value="30">
-                                            <label for="sz5">XL</label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="pro-single-btn">
-                                <div class="quantity cart-plus-minus">
-                                    <input class="text-value" type="text" value="1">
-                                </div>
-                                <a href="#" class="theme-btn-s2">Add to cart</a>
-                                <a href="#" class="wl-btn"><i class="fi flaticon-heart"></i></a>
-                            </div>
-                            <ul class="important-text">
-                                <li><span>SKU:</span>{{ $product->product_code }}</li>
-                                <li><span>Categories:</span>{{ $product->category->category_name }}</li>
-                                <li><span>Tags:</span>Fashion, Coat, Pink</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
             <div class="product-tab-area">
                 <ul class="nav nav-mb-3 main-tab" id="tab" role="tablist">
@@ -147,9 +128,9 @@
                             (3)</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="Information-tab" data-bs-toggle="pill"
-                            data-bs-target="#Information" type="button" role="tab" aria-controls="Information"
-                            aria-selected="false">Additional info</button>
+                        <button class="nav-link" id="Information-tab" data-bs-toggle="pill" data-bs-target="#Information"
+                            type="button" role="tab" aria-controls="Information" aria-selected="false">Additional
+                            info</button>
                     </li>
                 </ul>
                 <div class="tab-content">

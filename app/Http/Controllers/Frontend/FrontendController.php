@@ -30,7 +30,15 @@ class FrontendController extends Controller
     {
         $product = Product::where('slug',$slug)->first();
         $product_sliders = SliderImage::where('product_id',$product->id)->get();
-        return view('Frontend.pages.product_details',compact('product', 'product_sliders'));
+        $product_colors = Inventory::where('product_id', $product->id)
+            ->groupBy('color_id')
+            ->selectRaw('sum(color_id) as sum, color_id')
+            ->get();
+        $product_sizes = Inventory::where('product_id', $product->id)
+            ->groupBy('size_id')
+            ->selectRaw('sum(size_id) as sum, size_id')
+            ->get();
+        return view('Frontend.pages.product_details',compact('product', 'product_sliders', 'product_colors', 'product_sizes'));
     }
 
     public function category_product($slug)

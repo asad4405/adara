@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\ShoppingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,6 +11,10 @@ Route::get('/product/{slug}',[FrontendController::class,'product_details'])->nam
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
 Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
 Route::post('/contact/submit',[FrontendController::class,'contact_submit'])->name('contact.submit');
+
+Route::post('/add-to-cart',[ShoppingController::class,'add_to_cart'])->name('add-to-cart');
+Route::get('/cart',[ShoppingController::class,'cart_view'])->name('cart');
+Route::get('/cart/remove/{key}', [ShoppingController::class, 'cart_remove'])->name('cart.remove');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

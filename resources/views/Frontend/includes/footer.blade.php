@@ -5,7 +5,9 @@
                 <div class="col col-lg-3 col-md-6 col-sm-12 col-12">
                     <div class="widget about-widget">
                         <div class="logo widget-title">
-                            <img src="{{ asset('public/Frontend') }}/images/logo-2.svg" alt="blog">
+                            <a href="{{ route('index') }}">
+                                <img src="{{ asset($generalsetting->dark_logo) }}" alt="logo">
+                            </a>
                         </div>
                         <p>Elit commodo nec urna erat morbi at hac turpis aliquam.
                             In tristique elit nibh turpis. Lacus volutpat ipsum convallis tellus pellentesque
@@ -43,7 +45,9 @@
                         </div>
                         <ul>
                             @foreach ($categories as $value)
-                                <li><a href="{{ route('category.product',$value->slug) }}">{{ $value->category_name }}</a></li>
+                                <li><a
+                                        href="{{ route('category.product', $value->slug) }}">{{ $value->category_name }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
