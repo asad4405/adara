@@ -10,8 +10,8 @@
                 <div class="col col-xs-12">
                     <div class="wpo-breadcumb-wrap">
                         <ol class="wpo-breadcumb-wrap">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="product.html">Product Page</a></li>
+                            <li><a href="{{ route('index') }}">Home</a></li>
+                            <li><a href="">Product Page</a></li>
                             <li>Cart</li>
                         </ol>
                     </div>
@@ -137,21 +137,46 @@
                         </form>
                     </div>
                     <div class="col-lg-4 col-12">
+                        <form action="{{ route('cart') }}" method="GET">
+                            <div class="mb-4 apply-area">
+                                <input type="text" name="coupon_name" value="{{ $coupon }}" class="form-control"
+                                    placeholder="Enter your coupon">
+                                {{ session(['S_coupon' => $coupon]) }}
+                                <button class="theme-btn-s2" type="submit">Apply</button>
+                            </div>
+                            @if ($messg)
+                                <div class="alert alert-danger">{{ $messg }}</div>
+                            @endif
+                        </form>
+                        @php
+                            $discount = 0;
+                            $total_amount = $subtotal;
+                            if ($type == 1) {
+                                $discount = round(($subtotal * $amount) / 100);
+                                $total_amount = $subtotal - $discount;
+                            } else {
+                                $discount = $amount;
+                                $total_amount = $subtotal - $discount;
+                            }
+                        @endphp
                         <div class="cart-total-wrap">
                             <h3>Cart Totals</h3>
                             <div class="sub-total">
                                 <h4>Subtotal</h4>
                                 <span>৳ {{ $subtotal }}</span>
+                                {{ session(['S_sub_total' => $subtotal]) }}
                             </div>
                             <div class="my-3 sub-total">
                                 <h4>Discount</h4>
-                                <span>00.00</span>
+                                <span>৳ {{ $discount }}</span>
+                                {{ session(['S_discount' => $discount]) }}
                             </div>
                             <div class="mb-3 total">
                                 <h4>Total</h4>
-                                <span>৳ {{ $subtotal }}</span>
+                                <span>৳ {{ $total_amount }}</span>
+                                {{ session(['S_total' => $total_amount]) }}
                             </div>
-                            <a class="theme-btn-s2" href="checkout.html">Proceed To CheckOut</a>
+                            <a class="theme-btn-s2" href="{{ route('customer.checkout') }}">Proceed To CheckOut</a>
                         </div>
                     </div>
                 </div>

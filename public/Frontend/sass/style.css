@@ -11926,9 +11926,9 @@ ul li {
 }
 
 .wpo-checkout-area .oreder-item .oreder-product .images {
-  width: 100px;
-  height: 90px;
-  background: #F3F3F3;
+  width: 50px;
+  height: 30px;
+  /* background: #F3F3F3; */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11988,7 +11988,7 @@ ul li {
 }
 
 .wpo-checkout-area .submit-btn-area {
-  margin-top: 20px;
+  margin-top: -20px;
 }
 
 .wpo-checkout-area .submit-btn-area .theme-btn, .wpo-checkout-area .submit-btn-area .view-cart-btn {

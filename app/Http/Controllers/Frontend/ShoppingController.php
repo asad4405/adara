@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ShoppingController extends Controller
@@ -25,10 +27,39 @@ class ShoppingController extends Controller
         return redirect()->back()->with('success', 'Product added to cart!');
     }
 
-    public function cart_view()
+    public function cart_view(Request $request)
     {
+        $messg = '';
+        $type = '';
+        $amount = 0;
+
+        if ($request->coupon_name) {
+            $coupon = $request->coupon_name;
+            if (Coupon::where('coupon_name', $coupon)->exists()) {
+                if (Coupon::where('coupon_name', $coupon)->where('limit', '!=', 0)->exists()) {
+                    if (Carbon::now()->format('Y-m-d') < Coupon::where('coupon_name', $coupon)->first()->validity) {
+                        $type = Coupon::where('coupon_name', $coupon)->first()->type;
+                        $amount = Coupon::where('coupon_name', $coupon)->first()->amount;
+                    } else {
+
+                        $messg = 'Coupon Expired!';
+                        $amount = 0;
+                    }
+                } else {
+                    $messg = 'Coupon Does not Limit!';
+                    $amount = 0;
+                }
+            } else {
+                $messg = 'Coupon Does not exists!';
+                $amount = 0;
+            }
+        } else {
+            $amount = 0;
+            $coupon = '';
+        }
+
         $cart = session()->get('cart', []);
-        return view('Frontend.pages.cart', compact('cart'));
+        return view('Frontend.pages.cart', compact('cart','coupon','type','amount','messg'));
     }
 
     public function cart_remove($key)
@@ -46,5 +77,10 @@ class ShoppingController extends Controller
 
         return redirect()->back();
         // session()->forget('cart'); // cart all delete
+    }
+
+    public function cart_apply()
+    {
+        //
     }
 }
