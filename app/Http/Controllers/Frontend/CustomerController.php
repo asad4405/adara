@@ -47,20 +47,38 @@ class CustomerController extends Controller
 
         if(Customer::where('phone', $request->phone_email)->exists()){
             if (Auth::guard('customer')->attempt(['phone' => $request->phone_email, 'password' => $request->password])) {
-                return 'Login';
-                // return redirect()->route('customer.profile');
+                return redirect()->route('customer.profile');
             } else {
                 return back()->with('wrong', 'Wrong Credential!');
             }
         }elseif (Customer::where('email', $request->phone_email)->exists()) {
             if (Auth::guard('customer')->attempt(['email' => $request->phone_email, 'password' => $request->password])) {
-                return 'Login';
+                return redirect()->route('customer.profile');
             } else {
                 return back()->with('wrong', 'Wrong Credential!');
             }
         } else {
             return back()->with('exists', 'Email Does not exists!');
         }
+    }
+
+    public function profile()
+    {
+        return view('Frontend.customer.profile');
+    }
+
+    public function profile_update(Request $request)
+    {
+        $customer = Customer::find(Auth::guard('customer')->id());
+        $customer->name = $request->name;
+        $customer->phone = $request->phone;
+        $customer->email = $request->email;
+        $customer->district = $request->district;
+        $customer->address = $request->address;
+        $customer->area = $request->area;
+        $customer->update();
+
+        return redirect()->back()->with('success','Customer Profile Updated Success!');
     }
 
     public function checkout()

@@ -25,6 +25,8 @@ Route::get('/customer/register', [CustomerController::class, 'register'])->name(
 Route::post('/customer/register/store', [CustomerController::class, 'register_store'])->name('customer.register.store');
 Route::get('/customer/login', [CustomerController::class, 'login'])->name('customer.login');
 Route::post('/customer/login/store', [CustomerController::class, 'login_store'])->name('customer.login.store');
+Route::get('/customer/profile', [CustomerController::class, 'profile'])->name('customer.profile');
+Route::post('/customer/profile/update', [CustomerController::class, 'profile_update'])->name('customer.profile.update');
 
 
 

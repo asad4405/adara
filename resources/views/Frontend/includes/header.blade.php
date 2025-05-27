@@ -83,7 +83,13 @@
                             <li><a href="compare.html"><i
                                         class="fi flaticon-right-and-left"></i><span>Compare</span></a>
                             </li>
-                            <li><a href="login.html"><i class="fi flaticon-user-profile"></i><span>Login</span></a></li>
+                            @auth('customer')
+                                <li><a href="{{ route('customer.profile') }}"><i
+                                            class="fi flaticon-user-profile"></i><span>Profile</span></a></li>
+                            @else
+                                <li><a href="{{ route('customer.login') }}"><i
+                                            class="fi flaticon-user-profile"></i><span>Login</span></a></li>
+                            @endauth
                             <li>
                                 <div class="header-wishlist-form-wrapper">
                                     <button class="wishlist-toggle-btn"> <i class="fi flaticon-heart"></i>
@@ -160,11 +166,12 @@
                                                 @endphp
                                                 <div class="clearfix mini-cart-item">
                                                     <div class="mini-cart-item-image">
-                                                        <a href="{{ route('product.details',$product->slug) }}"><img
+                                                        <a href="{{ route('product.details', $product->slug) }}"><img
                                                                 src="{{ asset($product->product_image) }}" alt></a>
                                                     </div>
                                                     <div class="mini-cart-item-des">
-                                                        <a href="{{ route('product.details',$product->slug) }}">{{ $product->product_name }}</a>
+                                                        <a
+                                                            href="{{ route('product.details', $product->slug) }}">{{ $product->product_name }}</a>
                                                         <span class="mini-cart-item-price">
                                                             @if ($product->product_type == 1)
                                                                 ৳ {{ $price = $inventory->price }}
@@ -172,7 +179,8 @@
                                                                 ৳ {{ $price = $product->new_price }}
                                                             @endif x {{ $value['quantity'] }}
                                                         </span>
-                                                        <span class="mini-cart-item-quantity"><a href="{{ route('cart.remove', $key) }}"><i
+                                                        <span class="mini-cart-item-quantity"><a
+                                                                href="{{ route('cart.remove', $key) }}"><i
                                                                     class="ti-close"></i></a></span>
                                                     </div>
                                                 </div>

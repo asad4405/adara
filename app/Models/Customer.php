@@ -11,7 +11,7 @@ class Customer extends Authenticatable
 
     protected $guard = 'customer';
 
-    protected $fillable = ['id'];
+    protected $guarded = ['id'];
 
     protected $hidden = [
         'password',
