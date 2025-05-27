@@ -187,7 +187,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                         <div class="product-item">
                             <div class="image">
-                                <img src="assets/images/interest-product/1.png" alt="">
+                                <img src="{{ asset('public/Frontend') }}/images/interest-product/1.png" alt="">
                                 <div class="tag new">New</div>
                             </div>
                             <div class="text">

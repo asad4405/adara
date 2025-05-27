@@ -19,6 +19,15 @@ Route::get('/cart/remove/{key}', [ShoppingController::class, 'cart_remove'])->na
 
 Route::get('/checkout', [CustomerController::class, 'checkout'])->name('customer.checkout');
 
+
+// customer
+Route::get('/customer/register', [CustomerController::class, 'register'])->name('customer.register');
+Route::post('/customer/register/store', [CustomerController::class, 'register_store'])->name('customer.register.store');
+Route::get('/customer/login', [CustomerController::class, 'login'])->name('customer.login');
+Route::post('/customer/login/store', [CustomerController::class, 'login_store'])->name('customer.login.store');
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
