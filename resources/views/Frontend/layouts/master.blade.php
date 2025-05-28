@@ -15,6 +15,7 @@
         @include('Frontend.includes.footer')
     </div>
     <!-- end of page-wrapper -->
+    @yield('script')
     @include('Frontend.includes.script')
 </body>
 </html>

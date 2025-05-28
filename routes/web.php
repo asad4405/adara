@@ -28,6 +28,10 @@ Route::post('/customer/login/store', [CustomerController::class, 'login_store'])
 Route::get('/customer/profile', [CustomerController::class, 'profile'])->name('customer.profile');
 Route::post('/customer/profile/update', [CustomerController::class, 'profile_update'])->name('customer.profile.update');
 
+// customer order
+Route::post('/customer/order/save', [CustomerController::class, 'order_save'])->name('customer.ordersave');
+Route::get('/order-success/{id}', [CustomerController::class, 'order_success'])->name('order.success');
+
 
 
 Route::get('/dashboard', function () {

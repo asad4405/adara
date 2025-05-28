@@ -28,7 +28,7 @@
             <div class="checkout-wrap">
                 <div class="row">
                     <div class="col-lg-6 col-12">
-                        <form action="" method="POST">
+                        <form action="{{ route('customer.ordersave') }}" method="POST">
                             @csrf
                             <div class="caupon-wrap s3">
                                 <div class="biling-item">
@@ -54,14 +54,19 @@
                                                     <label for="" class="form-label">Address <span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" placeholder="Enter your Address" id="Adress"
-                                                        name="Adress">
+                                                        name="address">
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-12">
                                                     <label for="" class="form-label">Shipping Area <span
                                                             class="text-danger">*</span></label>
-                                                    <select name="" class="form-select">
-                                                        <option value="">Inside Dhaka</option>
-                                                        <option value="">Outside Dhaka</option>
+                                                    <select name="" class="form-select" id="shipping-select">
+                                                        @foreach ($shipping_charge as $key => $value)
+                                                            <option value="{{ $value->amount }}"
+                                                                data-id="{{ $value->id }}"
+                                                                {{ $key == 0 ? 'selected' : '' }}>
+                                                                {{ $value->name }}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-12">
@@ -72,7 +77,7 @@
                                                 <div class="col-lg-12 col-md-12 col-12">
                                                     <label for="" class="form-label">Note (optional)</label>
                                                     <input type="text" placeholder="Note Here ..." id="Note"
-                                                        name="Note">
+                                                        name="customer_note">
                                                 </div>
                                             </div>
                                         </div>
@@ -127,14 +132,26 @@
                                 @endforelse
                                 <!-- Shipping -->
                                 <div class="title s2">
-                                    <h2>Shipping Charge<span>(+) ৳ {{ $subtotal }}</span></h2>
+                                    <h2>Subtotal<span> ৳ <span id="subtotal-amount">{{ $subtotal }}</span></span></h2>
+                                    <input type="hidden" value="{{ $subtotal }}" name="subtotal" id="subtotal">
                                 </div>
+
                                 <div class="title s2">
-                                    <h2>Discount<span>(-) {{ $discount = session('S_discount') }}</span></h2>
+                                    <h2>Shipping Charge <span>(+) ৳ <span id="shipping-amount"></span></span></h2>
+                                    <input type="hidden" name="shipping_info" id="shipping-info" value="">
                                 </div>
-                                <!-- Shipping -->
+
                                 <div class="title s2">
-                                    <h2>Total<span>৳ {{ $subtotal - $discount }}</span></h2>
+                                    <h2>Discount<span>(-) <span
+                                                id="discount-amount">{{ $discount = session('S_discount') }}</span></span>
+                                    </h2>
+                                    <input type="hidden" name="discount" value="{{ $discount }}" id="discount">
+                                </div>
+
+                                <!-- Total -->
+                                <div class="title s2">
+                                    <h2>Total<span>৳ <span id="total-amount"></span></span></h2>
+                                    <input type="hidden" name="total_amount" id="total-amount-input" value="">
                                 </div>
                             </div>
                         </div>
@@ -148,18 +165,14 @@
                                             <div class="payment-select">
                                                 <ul>
                                                     <li class="">
-                                                        <input id="remove" type="radio" name="payment" value="30"
-                                                            checked>
+                                                        <input id="remove" type="radio" name="payment"
+                                                            value="1" checked>
                                                         <label for="remove">Cash on Delivery</label>
                                                     </li>
                                                     <li class="">
-                                                        <input id="add" type="radio" name="payment" value="30">
-                                                        <label for="add">Pay With SSLCOMMERZ</label>
-                                                    </li>
-                                                    <li class="">
-                                                        <input id="getway" type="radio" name="payment"
-                                                            value="30">
-                                                        <label for="getway">Pay With STRIPE</label>
+                                                        <input id="add" type="radio" name="payment"
+                                                            value="2">
+                                                        <label for="add">Pay With Bkash</label>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -208,5 +221,45 @@
             </div>
         </div>
     </div>
-    <!-- wpo-checkout-area end-->
+    <!--  end-->
+
+    <!-- js code start -->
+    @section('script')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const select = document.getElementById('shipping-select');
+                const amountDisplay = document.getElementById('shipping-amount');
+                const hiddenShippingInput = document.getElementById('shipping-info');
+
+                const subtotal = parseFloat(document.getElementById('subtotal').value) || 0;
+                const discount = parseFloat(document.getElementById('discount').value) || 0;
+                const totalDisplay = document.getElementById('total-amount');
+                const totalInput = document.getElementById('total-amount-input');
+
+                function updateAmounts() {
+                    const selectedOption = select.options[select.selectedIndex];
+                    const amount = parseFloat(selectedOption.value) || 0; // shipping amount
+                    const id = selectedOption.getAttribute('data-id');
+
+                    // Update shipping charge
+                    amountDisplay.textContent = amount;
+                    hiddenShippingInput.value = id;
+
+                    // Calculate total
+                    const total = subtotal + amount - discount;
+
+                    // Update UI & hidden input
+                    totalDisplay.textContent = total;
+                    totalInput.value = total;
+                }
+
+                // Initial load
+                updateAmounts();
+
+                // On change
+                select.addEventListener('change', updateAmounts);
+            });
+        </script>
+    @endsection
+
 @endsection
