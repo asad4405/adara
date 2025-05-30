@@ -31,9 +31,11 @@
                         </div>
                         <div class="contact-ft">
                             <ul>
-                                <li><i class="fi flaticon-mail"></i>{{ $contact->email }}</li>
-                                <li><i class="fi flaticon-phone"></i>{{ $contact->phone }}</li>
-                                <li><i class="fi flaticon-pin"></i>{{ $contact->address }}</li>
+                                <li><i class="mt-2 fi flaticon-mail"></i><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></li>
+                                <li><i class="mt-2 fi flaticon-phone"></i><a href="tel:{{ $contact->phone }}"></a>{{ $contact->phone }}</li>
+                                <li><i class="mt-2 fi flaticon-mail"></i><a href="mailto:{{ $contact->hotmail }}">{{ $contact->hotmail }}</a></li>
+                                <li><i class="mt-2 fi flaticon-phone"></i><a href="tel:{{ $contact->hotline }}"></a>{{ $contact->hotline }}</li>
+                                <li><i class="mt-1 fi flaticon-pin"></i>{{ $contact->address }}</li>
                             </ul>
                         </div>
                     </div>
@@ -73,11 +75,15 @@
         <div class="container">
             <div class="row">
                 <div class="col col-xs-12">
-                    <p class="copyright"> Copyright &copy; 2025 Themart by <a href="index.html">wpOceans</a>.
+                    <p class="copyright"> Copyright &copy; 2025 Themart by <a href="{{ route('index') }}">wpOceans</a>.
                         All
                         Rights Reserved.</p>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Click to Contact -->
+    <a href="{{ $generalsetting->messenger }}" target="_blank" style="position: fixed;bottom: 90px;right: 10px;z-index:111">
+        <img src="http://localhost/ayaatsfashion/public/backEnd/assets/images/messenger.png" style="height:55px;border-radius:50%">
+    </a>
 </footer>

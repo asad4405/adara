@@ -7,13 +7,14 @@
             <div class="row">
                 <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="contact-intro">
-                        <span>A Marketplace Initiative by Themart Theme - save more with coupons</span>
+                        <span>{{ $generalsetting->description }}</span>
                     </div>
                 </div>
                 <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
                     <div class="contact-info">
                         <ul>
-                            <li><a href="tel:869968236"><span>Need help? Call Us:</span>+ +869 968 236</a></li>
+                            <li><a href="tel:{{ $contact->phone }}"><span>Need help? Call Us:
+                                    </span>+88{{ $contact->phone }}</a></li>
                             <li>
                                 <div class="dropdown">
                                     <button class="dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -23,18 +24,6 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li><a class="dropdown-item" href="#">English</a></li>
                                         <li><a class="dropdown-item" href="#">Bangla</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dropdown">
-                                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton2"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        USD
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                        <li><a class="dropdown-item" href="#">BDT</a></li>
-                                        <li><a class="dropdown-item" href="#">USD</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -51,8 +40,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-2">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html"><img
-                                src="{{ asset('public/Frontend') }}/images/logo.svg" alt="logo"></a>
+                        <a class="navbar-brand" href="{{ route('index') }}"><img
+                                src="{{ asset($generalsetting->dark_logo) }}" alt="logo" width="85"></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-12">
@@ -60,17 +49,14 @@
                         <div class="category">
                             <select name="service" class="form-control">
                                 <option disabled="disabled" selected="">All Category</option>
-                                <option>Men</option>
-                                <option>Women</option>
-                                <option>Kids</option>
-                                <option>Sales</option>
-                                <option>Perfect Cake</option>
-                                <option>All Of The Above</option>
+                                @foreach ($categories as $value)
+                                    <option>{{ $value->category_name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="search-box">
                             <div class="input-group">
-                                <input type="search" class="form-control" placeholder="What are you looking for?">
+                                <input type="search" class="form-control" placeholder="Search Product ...">
                                 <button class="search-btn" type="submit"> <i class="fi flaticon-search"></i>
                                 </button>
                             </div>
@@ -222,8 +208,8 @@
                     </div>
                     <div class="col-lg-1 col-md-6 col-sm-5 col-6 d-block d-lg-none">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="index.html"><img
-                                    src="{{ asset('public/Frontend') }}/images/logo.svg" alt="logo"></a>
+                            <a class="navbar-brand" href="{{ route('index') }}"><img
+                                    src="{{ asset($generalsetting->dark_logo) }}" alt="logo" width="85"></a>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-4 col-3">
@@ -231,60 +217,24 @@
                             <button class="header-shop-toggle-btn"><span>Shop By Category</span> </button>
                             <div class="mini-shop-item">
                                 <ul id="metis-menu">
-                                    <li>
-                                        <a href="product.html">Feature Product</a>
-                                    </li>
-                                    <li class="header-catagory-item">
-                                        <a class="menu-down-arrow" href="#">Perfunsee & Cologne</a>
-                                        <ul class="header-catagory-single">
-                                            <li><a href="#">Men's Clothing</a></li>
-                                            <li><a href="#">Computer & Office</a></li>
-                                            <li><a href="#">Jewelry & Watches</a></li>
-                                            <li><a href="#">Phones & Accessories</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="product.html">Best Sellers</a>
-                                    </li>
-                                    <li class="header-catagory-item">
-                                        <a class="menu-down-arrow" href="#">Men Fashion</a>
-                                        <ul class="header-catagory-single">
-                                            <li><a href="#">Men's Clothing</a></li>
-                                            <li><a href="#">Computer & Office</a></li>
-                                            <li><a href="#">Jewelry & Watches</a></li>
-                                            <li><a href="#">Phones & Accessories</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="product.html">Bags & Shoes</a>
-                                    </li>
-                                    <li class="header-catagory-item">
-                                        <a class="menu-down-arrow" href="#">Women Fashion</a>
-                                        <ul class="header-catagory-single">
-                                            <li><a href="#">Men's Clothing</a></li>
-                                            <li><a href="#">Computer & Office</a></li>
-                                            <li><a href="#">Jewelry & Watches</a></li>
-                                            <li><a href="#">Phones & Accessories</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="header-catagory-item">
-                                        <a class="menu-down-arrow" href="#">Toys & kids Baby</a>
-                                        <ul class="header-catagory-single">
-                                            <li><a href="#">Men's Clothing</a></li>
-                                            <li><a href="#">Computer & Office</a></li>
-                                            <li><a href="#">Jewelry & Watches</a></li>
-                                            <li><a href="#">Phones & Accessories</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="product.html">Men's Clothing</a>
-                                    </li>
-                                    <li>
-                                        <a href="product.html">On Sale</a>
-                                    </li>
-                                    <li>
-                                        <a href="product.html">All Accessories</a>
-                                    </li>
+                                    @foreach ($categories as $value)
+                                        @php
+                                            $subcategory = App\Models\Subcategory::where('category_id', $value->id)
+                                                ->where('status', 1)
+                                                ->first();
+                                        @endphp
+                                        <li class="header-catagory-item">
+                                            <a @if ($subcategory) class="menu-down-arrow" @endif
+                                                href="{{ route('category.product', $value->slug) }}">{{ $value->category_name }}</a>
+                                            <ul class="header-catagory-single">
+                                                @foreach ($value->subcategories as $subvalue)
+                                                    <li><a
+                                                            href="{{ route('subcategory.product', $subvalue->slug) }}">{{ $subvalue->subcategory_name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -293,6 +243,7 @@
                         <div id="navbar" class="collapse navbar-collapse navigation-holder">
                             <button class="menu-close"><i class="ti-close"></i></button>
                             <ul class="mb-2 nav navbar-nav mb-lg-0">
+                                <li class="d-lg-none"><a style="font-size: 10px" href="{{ route('index') }}">{{ $generalsetting->description }}</a></li>
                                 <li class="menu-item-has-children">
                                     <a href="{{ route('index') }}">Home</a>
                                 </li>

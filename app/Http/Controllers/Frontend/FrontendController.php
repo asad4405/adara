@@ -50,6 +50,11 @@ class FrontendController extends Controller
         return view('Frontend.pages.category', compact('products', 'new_products', 'subcategories'));
     }
 
+    public function subcategory_product($slug)
+    {
+        return $slug;
+    }
+
     public function shop()
     {
         $products = Product::where('status', 1)->inRandomOrder()->get();

@@ -18,13 +18,13 @@
             </div>
             <div class="featured-categorie-slider owl-carousel">
                 @foreach ($categories as $value)
-                    <a href="{{ route('category.product',$value->slug) }}">
+                    <a href="{{ route('category.product', $value->slug) }}">
                         <div class="featured-item">
                             <div class="images">
                                 <img src="{{ asset($value->image) }}" alt="">
                             </div>
                             <div class="text">
-                                <h2>{{ Str::limit($value->category_name,15) }}</h2>
+                                <h2>{{ Str::limit($value->category_name, 15) }}</h2>
                             </div>
                         </div>
                     </a>
@@ -55,7 +55,7 @@
                             <div class="count-up">
                                 <div id="clock"></div>
                             </div>
-                            <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            <a class="theme-btn-s2" href="product.html">Order Now</a>
                         </div>
 
                     </div>
@@ -65,7 +65,7 @@
                         <div class="text">
                             <h2>New Year Sale</h2>
                             <h4>Up To 70% Off</h4>
-                            <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            <a class="theme-btn-s2" href="product.html">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -88,33 +88,37 @@
                 <div class="row">
                     @foreach ($products as $value)
                         <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                            <div class="product-item">
-                                <div class="image">
-                                    <img src="{{ asset($value->product_image) }}" alt="">
-                                    {{-- <div class="tag new">New</div> --}}
-                                    {{-- <div class="tag sale">Sale</div> --}}
+                            <a href="{{ route('product.details', $value->slug) }}">
+                                <div class="product-item">
+                                    <div class="image">
+                                        <img src="{{ asset($value->product_image) }}" alt="">
+                                        {{-- <div class="tag new">New</div> --}}
+                                        {{-- <div class="tag sale">Sale</div> --}}
+                                    </div>
+                                    <div class="text">
+                                        <h2><a href="product-single.html">{{ $value->product_name }}</a></h2>
+                                        <div class="rating-product">
+                                            <i class="fi flaticon-star"></i>
+                                            <i class="fi flaticon-star"></i>
+                                            <i class="fi flaticon-star"></i>
+                                            <i class="fi flaticon-star"></i>
+                                            <i class="fi flaticon-star"></i>
+                                            <span>130</span>
+                                        </div>
+                                        <div class="price">
+                                            <span class="present-price">৳{{ $value->new_price }}</span>
+                                            @if ($value->new_price < $value->old_price)
+                                                <del class="old-price">৳{{ $value->old_price }}</del>
+                                            @endif
+                                        </div>
+                                        <div class="shop-btn">
+                                            <a class="theme-btn-s2"
+                                                href="{{ route('product.details', $value->slug) }}">Order
+                                                Now</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text">
-                                    <h2><a href="product-single.html">{{ $value->product_name }}</a></h2>
-                                    <div class="rating-product">
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <i class="fi flaticon-star"></i>
-                                        <span>130</span>
-                                    </div>
-                                    <div class="price">
-                                        <span class="present-price">৳{{ $value->new_price }}</span>
-                                        @if ($value->new_price < $value->old_price)
-                                            <del class="old-price">৳{{ $value->old_price }}</del>
-                                        @endif
-                                    </div>
-                                    <div class="shop-btn">
-                                        <a class="theme-btn-s2" href="{{ route('product.details',$value->slug) }}">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                     <div class="more-btn">
@@ -186,7 +190,7 @@
                                     </div>
                                     50
                                 </div>% Off</div>
-                            <a class="upcoming-btn" href="product.html">Shop Now</a>
+                            <a class="upcoming-btn" href="product.html">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -212,7 +216,8 @@
                         <li>
                             <div class="product-item">
                                 <div class="image">
-                                    <img src="{{ asset('public/Frontend') }}/images/special-product-1.jpg" alt="">
+                                    <img src="{{ asset('public/Frontend') }}/images/special-product-1.jpg"
+                                        alt="">
                                 </div>
                                 <div class="text">
                                     <h2><a href="product-single.html">Jewelry Sets</a></h2>
@@ -229,7 +234,7 @@
                                         <del class="old-price">$200.00</del>
                                     </div>
                                     <div class="shop-btn">
-                                        <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                        <a class="theme-btn-s2" href="product.html">Order Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -241,7 +246,8 @@
                         <li>
                             <div class="product-item">
                                 <div class="image">
-                                    <img src="{{ asset('public/Frontend') }}/images/special-product-2.jpg" alt="">
+                                    <img src="{{ asset('public/Frontend') }}/images/special-product-2.jpg"
+                                        alt="">
                                 </div>
                                 <div class="text">
                                     <h2><a href="product-single.html">White Shoe</a></h2>
@@ -258,7 +264,7 @@
                                         <del class="old-price">$150.00</del>
                                     </div>
                                     <div class="shop-btn">
-                                        <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                        <a class="theme-btn-s2" href="product.html">Order Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -304,7 +310,7 @@
                                 @endif
                             </div>
                             <div class="shop-btn">
-                                <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                                <a class="theme-btn-s2" href="product.html">Order Now</a>
                             </div>
                         </div>
                     </div>
@@ -344,7 +350,7 @@
                             <del class="old-price">$200.00</del>
                         </div>
                         <div class="shop-btn">
-                            <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            <a class="theme-btn-s2" href="product.html">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -368,7 +374,7 @@
                             <del class="old-price">$160.00</del>
                         </div>
                         <div class="shop-btn">
-                            <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            <a class="theme-btn-s2" href="product.html">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -392,7 +398,7 @@
                             <del class="old-price">$180.00</del>
                         </div>
                         <div class="shop-btn">
-                            <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            <a class="theme-btn-s2" href="product.html">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -416,7 +422,7 @@
                             <del class="old-price">$350.00</del>
                         </div>
                         <div class="shop-btn">
-                            <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            <a class="theme-btn-s2" href="product.html">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -441,7 +447,7 @@
                             <del class="old-price">$200.00</del>
                         </div>
                         <div class="shop-btn">
-                            <a class="theme-btn-s2" href="product.html">Shop Now</a>
+                            <a class="theme-btn-s2" href="product.html">Order Now</a>
                         </div>
                     </div>
                 </div>

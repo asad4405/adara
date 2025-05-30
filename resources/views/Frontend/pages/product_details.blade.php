@@ -35,18 +35,20 @@
                     <div class="row align-items-center">
                         <div class="col-lg-5">
                             <div class="product-single-img">
-                                <div class="product-active owl-carousel">
+                                <div class="product-active owl-carousel pdetails-bg-padding">
                                     @foreach ($product_sliders as $value)
                                         <div class="item">
-                                            <img src="{{ asset($value->slider_image) }}" alt="">
+                                            <img src="{{ asset($value->slider_image) }}" alt=""
+                                                class="pdetails-main-img">
                                         </div>
                                     @endforeach
 
                                 </div>
                                 <div class="product-thumbnil-active owl-carousel">
                                     @foreach ($product_sliders as $value)
-                                        <div class="item">
-                                            <img src="{{ asset($value->slider_image) }}" alt="">
+                                        <div class="item pdetails-bg-padding">
+                                            <img src="{{ asset($value->slider_image) }}" alt=""
+                                                class="pdetails-slider-img">
                                         </div>
                                     @endforeach
                                 </div>
@@ -70,34 +72,37 @@
                                     <span>120</span>
                                 </div>
                                 <p>{{ $product->short_description }}</p>
-                                <div class="product-filter-item color">
-                                    <div class="color-name">
-                                        <span>Color :</span>
-                                        <ul>
-                                            @foreach ($product_colors as $value)
-                                                <li class="color1"><input id="color{{ $value->color_id }}" type="radio"
-                                                        name="color_id" value="{{ $value->color_id }}">
-                                                    <label for="color{{ $value->color_id }}"
-                                                        style="background: {{ $value->color->color_code }}"></label>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+
+                                @if ($product->product_type == 1)
+                                    <div class="product-filter-item color">
+                                        <div class="color-name">
+                                            <span>Color :</span>
+                                            <ul>
+                                                @foreach ($product_colors as $value)
+                                                    <li class="color1"><input id="color{{ $value->color_id }}"
+                                                            type="radio" name="color_id" value="{{ $value->color_id }}">
+                                                        <label for="color{{ $value->color_id }}"
+                                                            style="background: {{ $value->color->color_code }}"></label>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="product-filter-item color filter-size">
-                                    <div class="color-name">
-                                        <span>Sizes:</span>
-                                        <ul>
-                                            @foreach ($product_sizes as $value)
-                                                <li class="color"><input id="size{{ $value->size_id }}" type="radio"
-                                                        name="size_id" value="{{ $value->size_id }}">
-                                                    <label
-                                                        for="size{{ $value->size_id }}">{{ $value->size->size_name }}</label>
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                    <div class="product-filter-item color filter-size">
+                                        <div class="color-name">
+                                            <span>Sizes:</span>
+                                            <ul>
+                                                @foreach ($product_sizes as $value)
+                                                    <li class="color"><input id="size{{ $value->size_id }}" type="radio"
+                                                            name="size_id" value="{{ $value->size_id }}">
+                                                        <label
+                                                            for="size{{ $value->size_id }}">{{ $value->size->size_name }}</label>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                                 <div class="pro-single-btn">
                                     <div class="quantity cart-plus-minus">
                                         <input class="text-value" type="text" value="1" name="quantity">
