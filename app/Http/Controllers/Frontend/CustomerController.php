@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\Payment;
@@ -97,7 +98,7 @@ class CustomerController extends Controller
     public function order_save(Request $request)
     {
         $request->validate([
-            'phone' =>'required',
+            'phone' => 'required',
         ]);
 
         $subtotal = $request->subtotal;
@@ -135,6 +136,7 @@ class CustomerController extends Controller
         $order->total           = $total;
         $order->customer_id     = $customer_id;
         $order->order_status    = 1;
+        $order->phone           = $request->phone;
         $order->customer_note   = $request->customer_note;
         $order->save();
 
@@ -142,15 +144,20 @@ class CustomerController extends Controller
         $cart = session()->get('cart', []);
         foreach ($cart as $value) {
             $product = Product::find($value['product_id']);
-            $order_details                   = new OrderDetails();
-            $order_details->order_id         = $order->id;
-            $order_details->product_id       = $product->id;
-            $order_details->product_name     = $product->product_name;
-            $order_details->purchase_price   = $product->purchase_price;
-            $order_details->sale_price       = $product->new_price;
-            $order_details->product_size     = $value['size_id'];
-            $order_details->product_color    = $value['color_id'];
-            $order_details->quantity         = $value['quantity'];
+            if ($product->product_type == 1) {
+                $inventory = Inventory::where(['product_id' => $product->id, 'color_id' => $value['color_id'], 'size_id' => $value['size_id']])->first();
+            }
+            $order_details                         = new OrderDetails();
+            $order_details->order_id               = $order->id;
+            $order_details->product_id             = $product->id;
+            $order_details->product_name           = $product->product_name;
+            $order_details->purchase_price         = $product->purchase_price;
+            $order_details->sale_price             = $product->new_price;
+            $order_details->variant_purchase_price = $inventory->purchase_price;
+            $order_details->variant_sale_price     = $inventory->price;
+            $order_details->product_size           = $value['size_id'];
+            $order_details->product_color          = $value['color_id'];
+            $order_details->quantity               = $value['quantity'];
             $order_details->save();
         }
 
@@ -173,12 +180,12 @@ class CustomerController extends Controller
         $payment->payment_method = 'Cash On Delivery';
         $payment->payment_status = 'pending';
         $payment->save();
-        return redirect()->route('order.success',$order->id)->with('success','Order Success');
+        return redirect()->route('order.success', $order->id)->with('success', 'Order Success');
     }
 
     public function order_success($id)
     {
         $order = Order::findOrFail($id);
-        return view('Frontend.customer.order_success',compact('order'));
+        return view('Frontend.customer.order_success', compact('order'));
     }
 }

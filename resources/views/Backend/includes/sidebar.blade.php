@@ -67,6 +67,29 @@
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cart"></i>
+                <div data-i18n="Layouts">Orders</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('admin.orders', ['slug' => 'all']) }}" class="menu-link">
+                        <div data-i18n="Without menu">All Order</div>
+                    </a>
+                </li>
+                @foreach ($orderstatus as $value)
+                    <li class="menu-item">
+                        <a href="{{ route('admin.orders', ['slug' => $value->slug]) }}" class="menu-link">
+                            <div data-i18n="Without menu">{{ $value->name }}</div>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </li>
+
+        <!-- Layouts -->
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cube"></i>
                 <div data-i18n="Layouts">Products</div>
             </a>

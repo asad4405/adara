@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\GoogleTagManagerController;
 use App\Http\Controllers\Backend\InventoryController;
 use App\Http\Controllers\Backend\MailGatewayController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\OrderStatusController;
 use App\Http\Controllers\Backend\PaymentGatewayController;
 use App\Http\Controllers\Backend\PixelController;
@@ -85,6 +86,11 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::get('coupon/get/data', [CouponController::class, 'getData'])->name('admin.coupon.get-data');
     Route::get('coupon/status/{id}', [CouponController::class, 'statusUpdate']);
 
+    // ================================ order ========================================== //
+    Route::get('order/{slug}', [OrderController::class, 'index'])->name('admin.orders');
+    Route::get('order/get/data', [OrderController::class, 'getData'])->name('admin.order.get-data');
+
+    Route::get('order/invoice/{id}', [OrderController::class, 'invoice'])->name('admin.order.invoice');
     // general setting
     Route::resource('general/setting', GeneralSettingController::class, ['names' => 'admin.generalSetting']);
     Route::get('general/setting/get/data', [GeneralSettingController::class, 'getData'])->name('admin.generalSetting.get-data');

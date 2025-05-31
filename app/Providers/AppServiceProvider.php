@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\GeneralSetting;
+use App\Models\OrderStatus;
 use App\Models\SocialMedia;
 use Illuminate\Support\ServiceProvider;
 
@@ -34,5 +35,8 @@ class AppServiceProvider extends ServiceProvider
 
         $categories = Category::where('status', 1)->latest()->get();
         view()->share('categories', $categories);
+
+        $orderstatus = OrderStatus::where('status', 1)->get();
+        view()->share('orderstatus', $orderstatus);
     }
 }
