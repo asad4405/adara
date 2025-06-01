@@ -88,9 +88,12 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
 
     // ================================ order ========================================== //
     Route::get('order/{slug}', [OrderController::class, 'index'])->name('admin.orders');
-    Route::get('order/get/data', [OrderController::class, 'getData'])->name('admin.order.get-data');
+    Route::get('order/get/data/{slug}', [OrderController::class, 'getData'])->name('admin.order.get-data');
 
     Route::get('order/invoice/{id}', [OrderController::class, 'invoice'])->name('admin.order.invoice');
+    Route::get('order/process/{id}', [OrderController::class, 'process'])->name('admin.order.process');
+    Route::post('order/update/{id}', [OrderController::class, 'order_update'])->name('admin.order.update');
+
     // general setting
     Route::resource('general/setting', GeneralSettingController::class, ['names' => 'admin.generalSetting']);
     Route::get('general/setting/get/data', [GeneralSettingController::class, 'getData'])->name('admin.generalSetting.get-data');

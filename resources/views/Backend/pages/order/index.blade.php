@@ -45,7 +45,7 @@
                 ],
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.order.get-data') }}",
+                ajax: "{{ route('admin.order.get-data',$slug) }}",
                 columns: [{
                         data: 'id',
                     },
