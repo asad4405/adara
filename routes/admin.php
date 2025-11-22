@@ -92,6 +92,8 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
 
     Route::get('order/invoice/{id}', [OrderController::class, 'invoice'])->name('admin.order.invoice');
     Route::get('order/process/{id}', [OrderController::class, 'process'])->name('admin.order.process');
+    Route::post('order/change/{id}', [OrderController::class, 'order_change'])->name('admin.order.change');
+    Route::get('order/edit/{id}', [OrderController::class, 'order_edit'])->name('admin.order.edit');
     Route::post('order/update/{id}', [OrderController::class, 'order_update'])->name('admin.order.update');
 
     // general setting

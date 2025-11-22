@@ -43,7 +43,7 @@
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
                     <div class="card-body">
-                        <form action="{{ route('admin.order.update', $order->id) }}" method="POST">
+                        <form action="{{ route('admin.order.change', $order->id) }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 col-12">

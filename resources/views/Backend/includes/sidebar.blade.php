@@ -45,7 +45,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">{{ $generalsetting->name }}</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -72,11 +72,11 @@
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item">
+                {{-- <li class="menu-item">
                     <a href="{{ route('admin.orders', ['slug' => 'all']) }}" class="menu-link">
                         <div data-i18n="Without menu">All Order</div>
                     </a>
-                </li>
+                </li> --}}
                 @foreach ($orderstatus as $value)
                     <li class="menu-item">
                         <a href="{{ route('admin.orders', ['slug' => $value->slug]) }}" class="menu-link">
